@@ -37,13 +37,13 @@ Common data structures used in technical interviews
 
 📈 More challenges and optimized solutions coming soon!
 
+---
 
-Day 2 – Java Practice (17 Dec)
+
+🚀 Day 2 – Java Practice (17 Dec)
 
 On 17 Dec (Day 2), I completed 10 practice questions in Java.
 The implementations are currently stored as C# files in the programming-elements folder, but they reflect my Java problem-solving practice.
-
-📂 Questions Completed
 
 AddTwoNumbers (AddTwo.java) – Reads two numbers and prints their sum.
 
