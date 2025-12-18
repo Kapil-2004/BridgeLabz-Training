@@ -64,3 +64,40 @@ PowerCalculation (PowerCalculation.java) – Raises a base number to a given exp
 SimpleInterestCalculator (SimpleInterestCalculator.java) – Calculates simple interest from principal, rate, and time.
 
 Welcome (Welcome.java) – Prints a welcome message to verify the environment setup.
+
+---
+
+🚀 Day 3 – C# Practice (18 Dec)
+
+On 18 Dec (Day 3), I successfully re-implemented all the tasks from Day 1 and Day 2 using C#.
+This helped me strengthen my understanding of syntax differences, logic translation, and problem-solving across languages.
+
+🔁 Work Completed
+
+✅ Converted all Day 1 LeetCode-style problems from Java logic into C#
+
+✅ Converted all Day 2 basic programming problems into C#
+
+✅ Ensured the same logic and output behavior while adapting to C# conventions
+
+✅ Practiced:
+
+Input/output handling in C#
+
+Basic arithmetic operations
+
+Conditional logic
+
+Collections (List, Set, Dictionary)
+
+Clean and readable code structure
+
+📌 Outcome
+
+This day focused on language adaptability, allowing me to:
+
+Reinforce core programming concepts
+
+Gain hands-on experience with C# fundamentals
+
+Build confidence in switching between Java and C#
