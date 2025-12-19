@@ -101,3 +101,25 @@ Reinforce core programming concepts
 Gain hands-on experience with C# fundamentals
 
 Build confidence in switching between Java and C#
+
+---
+
+📅 Day 4 – C# Training (19 Dec)
+
+On 19 Dec (Day 4), I focused on strengthening my C# fundamentals by learning core concepts and practicing problem-solving.
+
+🔹 Work Done
+
+Studied C# data types and operators (Arithmetic, Relational, Logical, Assignment, Unary, Ternary, Bitwise)
+
+Learned operator precedence, naming conventions, and access modifiers
+
+Practiced operator-based programs
+
+Completed practice sheets:
+
+Level 1: 16 questions
+
+Level 2: 12 questions
+
+Ensured all programs compiled and produced correct output
