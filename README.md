@@ -123,3 +123,27 @@ Level 1: 16 questions
 Level 2: 12 questions
 
 Ensured all programs compiled and produced correct output
+
+---
+
+📅 Day 6 – C# Control Flow Practice (22 Dec 2025)
+
+On 22 Dec (Day 6), I focused on C# control flow concepts and practiced multiple coding problems to strengthen logical thinking.
+
+🔹 Work Done
+
+Practiced control flow statements including if-else, switch-case, and loops (for, while, do-while)
+
+Learned to plan program logic efficiently and handle different scenarios using branching and loops
+
+Improved understanding of nested conditions and looping patterns
+
+Completed practice sheets:
+
+Level 1: 16 questions
+
+Level 2: 9 questions
+
+Level 3: 6 questions
+
+Verified all programs for correct output and logic
