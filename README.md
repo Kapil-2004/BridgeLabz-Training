@@ -147,3 +147,25 @@ Level 2: 9 questions
 Level 3: 6 questions
 
 Verified all programs for correct output and logic
+
+---
+
+📅 Day 7 – C# Array Practice (23 Dec 2025)
+
+On 23 Dec (Day 7), I focused on arrays in C# and practiced multiple problems to strengthen my understanding of storing, accessing, and manipulating collections of data.
+
+🔹 Work Done
+
+Practiced array operations including initialization, traversal, insertion, deletion, and searching
+
+Learned to work with single-dimensional arrays efficiently and apply loops to solve array-based problems
+
+Improved understanding of array manipulation logic for problem-solving
+
+Completed practice sheets:
+
+Level 1: 10 questions
+
+Level 2: 10 questions
+
+Verified all programs for correct output and logic
