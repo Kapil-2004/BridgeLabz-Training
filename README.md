@@ -268,4 +268,68 @@ All programs were verified for correct output and logic.
 
 Committed all solutions with meaningful commit messages
 
+---
+
+📅 Day 10 – Scenario-Based Problems (Strings & Arrays) in C#
+Date: 29 Dec 2025
+
+On 29 Dec (Day 10), I worked on real-world, scenario-based problems using Strings and Arrays, focusing on clean logic and edge-case handling.
+
+🔹 Work Done
+
+Strings – Sentence Formatter
+
+Trimmed extra spaces
+
+Ensured proper spacing after punctuation
+
+Capitalized sentences for better readability
+
+Strings – Paragraph Analyzer
+
+Counted total words
+
+Found the longest word
+
+Replaced words case-insensitively
+
+Handled edge cases like empty or space-only input
+
+Arrays – Temperature Analyzer
+
+Analyzed weekly temperature data using a 2D array
+
+Found hottest and coldest days
+
+Calculated average temperature per day
+
+Arrays – Student Test Score Manager
+
+Stored and processed student scores
+
+Calculated average, highest, and lowest scores
+
+Displayed scores above average
+
+Handled invalid inputs (negative and non-numeric values)
+
+📘 What I Learned & Applied
+
+I learned how to apply strings and arrays to solve real-world scenarios instead of isolated problems.
+I applied modular logic by using methods to handle each task separately, such as validation, processing, and output.
+This improved error handling and made the programs easier to debug and extend.
+I also gained confidence in handling edge cases and writing clean, user-friendly logic.
+
+🧩 Practice Completed
+
+Solved multiple scenario-based problems using Strings and Arrays
+
+Verified logic and outputs before committing
+
+🔄 Version Control
+
+Committed all scenario-based solutions with clear messages
+
+Pushed complete work to the GitHub repository
+
 Pushed complete work to the GitHub repository
