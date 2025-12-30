@@ -228,4 +228,44 @@ Committed all method-based solutions with clear messages
 
 Pushed complete work to the GitHub repository
 
+---
 
+repository
+
+📅 Day 9 – Strings & Built-in Methods in C#
+Date: 26 Dec 2025
+
+On 26 Dec (Day 9), I focused on strings in C# and revised previously learned built-in methods through practice problems.
+
+🔹 Work Done
+
+Learned string creation and immutability
+
+Practiced common string operations and methods
+
+Strengthened problem-solving using built-in methods
+
+📘 What I Learned & Applied
+
+I learned that strings in C# are immutable and require careful handling during modifications.
+I applied built-in methods like Trim(), ToUpper(), ToLower(), and Replace() to solve real problems efficiently.
+This helped reduce manual logic and made the code more concise and readable.
+I also improved my understanding of choosing the right built-in method for each scenario.
+
+🧩 Practice Completed
+
+String-based problems: 11 questions
+
+Built-in methods practice:
+
+Level 1: 4 questions
+
+Level 2: 9 questions
+
+All programs were verified for correct output and logic.
+
+🔄 Version Control
+
+Committed all solutions with meaningful commit messages
+
+Pushed complete work to the GitHub repository
