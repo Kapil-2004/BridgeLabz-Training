@@ -187,3 +187,45 @@ Level 1: 10 questions
 Level 2: 10 questions
 
 Verified all programs for correct output and logic
+
+---
+
+📅 Day 8 – Methods in C#
+Date: 24 Dec 2025
+
+On 24 Dec (Day 8), I focused on understanding methods in C# and practiced writing modular and reusable code.
+
+🔹 Work Done
+
+Learned the basics of methods and their importance in structured programming
+
+Practiced method declaration, definition, and calling
+
+Worked with parameters and return types
+
+Improved code reusability and organization using methods
+
+📘 What I Learned & Applied
+
+I learned how methods help break large programs into smaller, manageable parts.
+I applied this by creating separate methods for calculations and logic instead of writing everything inside Main().
+This improved code readability and made testing individual functionalities easier.
+I also understood how parameters and return values help pass data efficiently between methods.
+
+🧩 Practice Completed
+
+Level 1: 11 questions
+
+Level 2: 12 questions
+
+Level 3: 10 questions
+
+All programs were tested for correct logic and execution flow.
+
+🔄 Version Control
+
+Committed all method-based solutions with clear messages
+
+Pushed complete work to the GitHub repository
+
+
