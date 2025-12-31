@@ -39,7 +39,7 @@ class Program
         string input = "Logo Design - 3000 INR, Web Page - 4500 INR";
 
         // Parse invoice
-        string[] tasks = InvoiceUtility.ParseInvoice(input);
+        string[] tasks = InvoiceGenerator.ParseInvoice(input);
 
         Console.WriteLine("Invoice Details:");
         foreach (string task in tasks)
@@ -48,8 +48,7 @@ class Program
         }
 
         // Calculate total
-        int totalAmount = InvoiceUtility.GetTotalAmount(tasks);
-
+        int totalAmount = InvoiceGenerator.GetTotalAmount(tasks);
         Console.WriteLine("\nTotal Invoice Amount: " + totalAmount + " INR");
     }
 }
