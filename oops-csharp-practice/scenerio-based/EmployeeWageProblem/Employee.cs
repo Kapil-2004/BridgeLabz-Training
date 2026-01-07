@@ -8,6 +8,6 @@ public class Employee
     {
         EmpId = empId;
         Name = name;
-        IsPresent = false; // default
+        IsPresent = false;
     }
 }
