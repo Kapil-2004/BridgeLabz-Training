@@ -9,7 +9,9 @@ public class EmployeeUtilityImpl : IEmployee
     int WAGE_PER_HOUR = 20;
     int FULL_TIME_HOURS = 8;
     int PART_TIME_HOURS = 8;
-    int WORKING_DAYS_PER_MONTH = 20;
+
+    int MAX_WORKING_DAYS = 20;
+    int MAX_WORKING_HOURS = 100;
 
     public void AddEmployee()
     {
@@ -23,7 +25,7 @@ public class EmployeeUtilityImpl : IEmployee
         Console.WriteLine("Employee Added Successfully");
     }
 
-    // Existing centralized attendance logic (UNCHANGED)
+    // Attendance logic (UNCHANGED)
     private int MarkAttendance(Employee emp)
     {
         int attendance = random.Next(0, 3); // 0-Absent, 1-Full, 2-Part
@@ -46,12 +48,9 @@ public class EmployeeUtilityImpl : IEmployee
             if (emp.EmpId == id)
             {
                 MarkAttendance(emp);
-
-                Console.WriteLine(
-                    emp.IsPresent
+                Console.WriteLine(emp.IsPresent
                     ? "Employee " + emp.Name + " is PRESENT"
-                    : "Employee " + emp.Name + " is ABSENT"
-                );
+                    : "Employee " + emp.Name + " is ABSENT");
                 return;
             }
         }
@@ -74,16 +73,12 @@ public class EmployeeUtilityImpl : IEmployee
                 {
                     case 1:
                         hoursWorked = FULL_TIME_HOURS;
-                        Console.WriteLine("Employee " + emp.Name + " is FULL TIME");
                         break;
-
                     case 2:
                         hoursWorked = PART_TIME_HOURS;
-                        Console.WriteLine("Employee " + emp.Name + " is PART TIME");
                         break;
-
                     default:
-                        Console.WriteLine("Employee " + emp.Name + " is ABSENT");
+                        hoursWorked = 0;
                         break;
                 }
 
@@ -95,8 +90,8 @@ public class EmployeeUtilityImpl : IEmployee
         Console.WriteLine("Employee Not Found");
     }
 
-    // ✅ UC-5: Monthly Wage Calculation (20 Working Days)
-    public void CalculateMonthlyWage()
+    // ✅ UC-6: Wage till max hours OR days reached
+    public void CalculateWageTillCondition()
     {
         Console.Write("Enter Employee ID: ");
         int id = int.Parse(Console.ReadLine());
@@ -105,10 +100,14 @@ public class EmployeeUtilityImpl : IEmployee
         {
             if (emp.EmpId == id)
             {
-                int totalMonthlyWage = 0;
+                int totalHours = 0;
+                int totalDays = 0;
+                int totalWage = 0;
 
-                for (int day = 1; day <= WORKING_DAYS_PER_MONTH; day++)
+                while (totalHours < MAX_WORKING_HOURS &&
+                       totalDays < MAX_WORKING_DAYS)
                 {
+                    totalDays++;
                     int attendanceType = MarkAttendance(emp);
                     int hoursWorked = 0;
 
@@ -117,21 +116,22 @@ public class EmployeeUtilityImpl : IEmployee
                         case 1:
                             hoursWorked = FULL_TIME_HOURS;
                             break;
-
                         case 2:
                             hoursWorked = PART_TIME_HOURS;
                             break;
-
                         default:
                             hoursWorked = 0;
                             break;
                     }
 
-                    totalMonthlyWage += hoursWorked * WAGE_PER_HOUR;
+                    totalHours += hoursWorked;
+                    totalWage += hoursWorked * WAGE_PER_HOUR;
                 }
 
-                Console.WriteLine("Monthly Wage for " + emp.Name +
-                    " : Rs " + totalMonthlyWage);
+                Console.WriteLine("Employee Name : " + emp.Name);
+                Console.WriteLine("Total Working Days : " + totalDays);
+                Console.WriteLine("Total Working Hours : " + totalHours);
+                Console.WriteLine("Total Wage : Rs " + totalWage);
                 return;
             }
         }
