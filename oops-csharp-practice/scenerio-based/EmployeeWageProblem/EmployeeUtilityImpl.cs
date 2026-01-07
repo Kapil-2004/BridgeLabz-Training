@@ -7,7 +7,8 @@ public class EmployeeUtilityImpl : IEmployee
     Random random = new Random();
 
     int WAGE_PER_HOUR = 20;
-    int FULL_DAY_HOURS = 8;
+    int FULL_TIME_HOURS = 8;
+    int PART_TIME_HOURS = 8;   // As assumed
 
     public void AddEmployee()
     {
@@ -17,10 +18,21 @@ public class EmployeeUtilityImpl : IEmployee
         Console.Write("Enter Employee Name: ");
         string name = Console.ReadLine();
 
-        Employee emp = new Employee(id, name);
-        employees.Add(emp);
-
+        employees.Add(new Employee(id, name));
         Console.WriteLine("Employee Added Successfully");
+    }
+
+    // Attendance marked ONCE and stored
+    private int MarkAttendance(Employee emp)
+    {
+        int attendance = random.Next(0, 3); // 0-Absent, 1-Full, 2-Part
+
+        if (attendance == 0)
+            emp.IsPresent = false;
+        else
+            emp.IsPresent = true;
+
+        return attendance;
     }
 
     public void CheckEmployeeStatus()
@@ -32,22 +44,16 @@ public class EmployeeUtilityImpl : IEmployee
         {
             if (emp.EmpId == id)
             {
-                int attendance = random.Next(0, 2);
+                MarkAttendance(emp);
 
-                if (attendance == 1)
-                {
-                    emp.IsPresent = true;
+                if (emp.IsPresent)
                     Console.WriteLine("Employee " + emp.Name + " is PRESENT");
-                }
                 else
-                {
-                    emp.IsPresent = false;
                     Console.WriteLine("Employee " + emp.Name + " is ABSENT");
-                }
+
                 return;
             }
         }
-
         Console.WriteLine("Employee Not Found");
     }
 
@@ -60,24 +66,29 @@ public class EmployeeUtilityImpl : IEmployee
         {
             if (emp.EmpId == id)
             {
-                int attendance = random.Next(0, 2);
-                int dailyWage = 0;
+                int attendanceType = MarkAttendance(emp);
+                int hoursWorked = 0;
 
-                if (attendance == 1)
+                if (attendanceType == 1)
                 {
-                    dailyWage = WAGE_PER_HOUR * FULL_DAY_HOURS;
-                    Console.WriteLine("Employee " + emp.Name + " is PRESENT");
-                    Console.WriteLine("Daily Wage: Rs " + dailyWage);
+                    hoursWorked = FULL_TIME_HOURS;
+                    Console.WriteLine("Employee " + emp.Name + " is FULL TIME");
+                }
+                else if (attendanceType == 2)
+                {
+                    hoursWorked = PART_TIME_HOURS;
+                    Console.WriteLine("Employee " + emp.Name + " is PART TIME");
                 }
                 else
                 {
                     Console.WriteLine("Employee " + emp.Name + " is ABSENT");
-                    Console.WriteLine("Daily Wage: Rs 0");
                 }
+
+                int dailyWage = hoursWorked * WAGE_PER_HOUR;
+                Console.WriteLine("Daily Wage: Rs " + dailyWage);
                 return;
             }
         }
-
         Console.WriteLine("Employee Not Found");
     }
 }
