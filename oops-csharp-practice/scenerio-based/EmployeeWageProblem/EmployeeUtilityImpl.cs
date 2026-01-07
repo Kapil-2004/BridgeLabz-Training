@@ -9,6 +9,7 @@ public class EmployeeUtilityImpl : IEmployee
     int WAGE_PER_HOUR = 20;
     int FULL_TIME_HOURS = 8;
     int PART_TIME_HOURS = 8;
+    int WORKING_DAYS_PER_MONTH = 20;
 
     public void AddEmployee()
     {
@@ -22,7 +23,7 @@ public class EmployeeUtilityImpl : IEmployee
         Console.WriteLine("Employee Added Successfully");
     }
 
-    // Attendance logic centralized (UNCHANGED behavior)
+    // Existing centralized attendance logic (UNCHANGED)
     private int MarkAttendance(Employee emp)
     {
         int attendance = random.Next(0, 3); // 0-Absent, 1-Full, 2-Part
@@ -57,7 +58,6 @@ public class EmployeeUtilityImpl : IEmployee
         Console.WriteLine("Employee Not Found");
     }
 
-    // ✅ UC-4: Solving using SWITCH CASE
     public void CalculateDailyWage()
     {
         Console.Write("Enter Employee ID: ");
@@ -89,6 +89,49 @@ public class EmployeeUtilityImpl : IEmployee
 
                 int dailyWage = hoursWorked * WAGE_PER_HOUR;
                 Console.WriteLine("Daily Wage: Rs " + dailyWage);
+                return;
+            }
+        }
+        Console.WriteLine("Employee Not Found");
+    }
+
+    // ✅ UC-5: Monthly Wage Calculation (20 Working Days)
+    public void CalculateMonthlyWage()
+    {
+        Console.Write("Enter Employee ID: ");
+        int id = int.Parse(Console.ReadLine());
+
+        foreach (Employee emp in employees)
+        {
+            if (emp.EmpId == id)
+            {
+                int totalMonthlyWage = 0;
+
+                for (int day = 1; day <= WORKING_DAYS_PER_MONTH; day++)
+                {
+                    int attendanceType = MarkAttendance(emp);
+                    int hoursWorked = 0;
+
+                    switch (attendanceType)
+                    {
+                        case 1:
+                            hoursWorked = FULL_TIME_HOURS;
+                            break;
+
+                        case 2:
+                            hoursWorked = PART_TIME_HOURS;
+                            break;
+
+                        default:
+                            hoursWorked = 0;
+                            break;
+                    }
+
+                    totalMonthlyWage += hoursWorked * WAGE_PER_HOUR;
+                }
+
+                Console.WriteLine("Monthly Wage for " + emp.Name +
+                    " : Rs " + totalMonthlyWage);
                 return;
             }
         }
