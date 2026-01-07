@@ -8,7 +8,7 @@ public class EmployeeUtilityImpl : IEmployee
 
     int WAGE_PER_HOUR = 20;
     int FULL_TIME_HOURS = 8;
-    int PART_TIME_HOURS = 8;   // As assumed
+    int PART_TIME_HOURS = 8;
 
     public void AddEmployee()
     {
@@ -22,7 +22,7 @@ public class EmployeeUtilityImpl : IEmployee
         Console.WriteLine("Employee Added Successfully");
     }
 
-    // Attendance marked ONCE and stored
+    // Attendance logic centralized (UNCHANGED behavior)
     private int MarkAttendance(Employee emp)
     {
         int attendance = random.Next(0, 3); // 0-Absent, 1-Full, 2-Part
@@ -46,17 +46,18 @@ public class EmployeeUtilityImpl : IEmployee
             {
                 MarkAttendance(emp);
 
-                if (emp.IsPresent)
-                    Console.WriteLine("Employee " + emp.Name + " is PRESENT");
-                else
-                    Console.WriteLine("Employee " + emp.Name + " is ABSENT");
-
+                Console.WriteLine(
+                    emp.IsPresent
+                    ? "Employee " + emp.Name + " is PRESENT"
+                    : "Employee " + emp.Name + " is ABSENT"
+                );
                 return;
             }
         }
         Console.WriteLine("Employee Not Found");
     }
 
+    // ✅ UC-4: Solving using SWITCH CASE
     public void CalculateDailyWage()
     {
         Console.Write("Enter Employee ID: ");
@@ -69,19 +70,21 @@ public class EmployeeUtilityImpl : IEmployee
                 int attendanceType = MarkAttendance(emp);
                 int hoursWorked = 0;
 
-                if (attendanceType == 1)
+                switch (attendanceType)
                 {
-                    hoursWorked = FULL_TIME_HOURS;
-                    Console.WriteLine("Employee " + emp.Name + " is FULL TIME");
-                }
-                else if (attendanceType == 2)
-                {
-                    hoursWorked = PART_TIME_HOURS;
-                    Console.WriteLine("Employee " + emp.Name + " is PART TIME");
-                }
-                else
-                {
-                    Console.WriteLine("Employee " + emp.Name + " is ABSENT");
+                    case 1:
+                        hoursWorked = FULL_TIME_HOURS;
+                        Console.WriteLine("Employee " + emp.Name + " is FULL TIME");
+                        break;
+
+                    case 2:
+                        hoursWorked = PART_TIME_HOURS;
+                        Console.WriteLine("Employee " + emp.Name + " is PART TIME");
+                        break;
+
+                    default:
+                        Console.WriteLine("Employee " + emp.Name + " is ABSENT");
+                        break;
                 }
 
                 int dailyWage = hoursWorked * WAGE_PER_HOUR;
