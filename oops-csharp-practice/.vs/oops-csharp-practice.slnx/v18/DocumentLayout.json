@@ -1,0 +1,156 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\BridgeLabz-Training\\oops-csharp-practice\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\BusRouteTracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scenerio-based\\BusRouteTracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\BirdSanctuary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scenerio-based\\BirdSanctuary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scenerio-based\\FitTrack\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\StrengthWorkout .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scenerio-based\\FitTrack\\StrengthWorkout .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\CardioWorkout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scenerio-based\\FitTrack\\CardioWorkout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\Workout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scenerio-based\\FitTrack\\Workout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\UserProfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scenerio-based\\FitTrack\\UserProfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\ITrackable.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scenerio-based\\FitTrack\\ITrackable.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BusRouteTracker.cs",
+              "DocumentMoniker": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\BusRouteTracker.cs",
+              "RelativeDocumentMoniker": "scenerio-based\\BusRouteTracker.cs",
+              "ToolTip": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\BusRouteTracker.cs",
+              "RelativeToolTip": "scenerio-based\\BusRouteTracker.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAABsAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T06:56:30.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BirdSanctuary.cs",
+              "DocumentMoniker": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\BirdSanctuary.cs",
+              "RelativeDocumentMoniker": "scenerio-based\\BirdSanctuary.cs",
+              "ToolTip": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\BirdSanctuary.cs",
+              "RelativeToolTip": "scenerio-based\\BirdSanctuary.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAowH8AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T06:56:18.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\Program.cs",
+              "RelativeDocumentMoniker": "scenerio-based\\FitTrack\\Program.cs",
+              "ToolTip": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\Program.cs",
+              "RelativeToolTip": "scenerio-based\\FitTrack\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T06:53:39.224Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StrengthWorkout .cs",
+              "DocumentMoniker": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\StrengthWorkout .cs",
+              "RelativeDocumentMoniker": "scenerio-based\\FitTrack\\StrengthWorkout .cs",
+              "ToolTip": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\StrengthWorkout .cs",
+              "RelativeToolTip": "scenerio-based\\FitTrack\\StrengthWorkout .cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T06:52:48.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CardioWorkout.cs",
+              "DocumentMoniker": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\CardioWorkout.cs",
+              "RelativeDocumentMoniker": "scenerio-based\\FitTrack\\CardioWorkout.cs",
+              "ToolTip": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\CardioWorkout.cs",
+              "RelativeToolTip": "scenerio-based\\FitTrack\\CardioWorkout.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T06:26:14.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Workout.cs",
+              "DocumentMoniker": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\Workout.cs",
+              "RelativeDocumentMoniker": "scenerio-based\\FitTrack\\Workout.cs",
+              "ToolTip": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\Workout.cs",
+              "RelativeToolTip": "scenerio-based\\FitTrack\\Workout.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T06:15:02.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserProfile.cs",
+              "DocumentMoniker": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\UserProfile.cs",
+              "RelativeDocumentMoniker": "scenerio-based\\FitTrack\\UserProfile.cs",
+              "ToolTip": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\UserProfile.cs",
+              "RelativeToolTip": "scenerio-based\\FitTrack\\UserProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T06:01:39.15Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ITrackable.cs",
+              "DocumentMoniker": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\ITrackable.cs",
+              "RelativeDocumentMoniker": "scenerio-based\\FitTrack\\ITrackable.cs",
+              "ToolTip": "D:\\BridgeLabz-Training\\oops-csharp-practice\\scenerio-based\\FitTrack\\ITrackable.cs",
+              "RelativeToolTip": "scenerio-based\\FitTrack\\ITrackable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T05:55:59.386Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
