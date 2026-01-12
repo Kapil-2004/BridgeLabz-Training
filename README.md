@@ -333,3 +333,121 @@ Committed all scenario-based solutions with clear messages
 Pushed complete work to the GitHub repository
 
 Pushed complete work to the GitHub repository
+
+---
+
+📅 Day 11 – December 30, 2025
+
+🧩 Topics Covered
+
+Scenario-based projects: Quiz App and Library Management System
+
+Constructors in C#
+
+Role-based login and access control
+
+✅ Work Done
+
+Built a Quiz Application allowing teachers to manage questions and students to attempt quizzes
+
+Developed a Library Management System with core functionalities
+
+Applied constructors in C# for effective object initialization
+
+Implemented role-based authentication in both projects
+
+🎯 What I Learned
+
+Practical use of constructors in real-world applications
+
+Importance of role-based access in application design
+
+Converting real-life scenarios into structured code
+
+---
+
+📅 Day 12 – December 31, 2025
+
+🧩 Topics Covered
+
+OOPs concepts and object-oriented design
+
+this, static, and sealed keywords in C#
+
+Scenario-based applications using OOP principles
+
+✅ Work Done
+
+Strengthened understanding of core OOP concepts through hands-on practice
+
+Implemented this, static, and sealed keywords in real-world scenarios
+
+Built a Bank Management System using OOP design
+
+Developed Mathematical Operation Testing and a Freelancer Invoice Generator as scenario-based applications
+
+🎯 What I Learned
+
+How OOP concepts improve code structure and reusability
+
+Practical use cases of this, static, and sealed keywords
+
+Applying object-oriented thinking to real-life problem solving
+
+---
+
+📅 Day 13 – January 1, 2026
+
+🧩 Topics Covered
+
+Scenario-based problem solving and design thinking
+
+Object modeling for real-world systems
+
+Class diagrams and sequence diagrams
+
+✅ Work Done
+
+Solved scenario-based problems to improve logical and design skills
+
+Learned object modeling to represent real-life problems effectively
+
+Designed solutions using class diagrams
+
+Practiced sequence diagrams to understand object interactions and workflows
+
+🎯 What I Learned
+
+How design thinking helps in structuring complex problems
+
+Visualizing system structure using class diagrams
+
+Understanding object communication through sequence diagrams
+
+---
+
+📅 Day 17 – January 6, 2026
+
+🧩 Topics Covered
+
+Revision of core OOP concepts
+
+Scenario-based problem solving
+
+Review and feedback session
+
+✅ Work Done
+
+Revised all previously learned OOP concepts in detail
+
+Solved multiple real-life scenario-based problems
+
+Shared a complete learning review and feedback with the mentor
+
+🎯 What I Learned
+
+Gained clarity and confidence in OOP fundamentals
+
+Improved problem-solving through real-world scenarios
+
+Understood areas of improvement through mentor feedback
