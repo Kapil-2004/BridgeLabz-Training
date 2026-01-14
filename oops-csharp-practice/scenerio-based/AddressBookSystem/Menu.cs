@@ -2,19 +2,60 @@ using System;
 
 namespace AddressBookSystem
 {
-    // Menu class handles user interaction
     public class Menu
     {
-        private AddressBookUtility utility;
+        private AddressBookManagerUtility manager;
 
-        // Constructor receives utility object
-        public Menu(AddressBookUtility utility)
+        public Menu(AddressBookManagerUtility manager)
         {
-            this.utility = utility;
+            this.manager = manager;
         }
 
-        // Displays menu and handles user choices
         public void ShowMenu()
+        {
+            int choice;
+            do
+            {
+                Console.WriteLine("\n--- Address Book System ---");
+                Console.WriteLine("1. Add Address Book");
+                Console.WriteLine("2. Open Address Book");
+                Console.WriteLine("3. List Address Books");
+                Console.WriteLine("4. Exit");
+                Console.Write("Enter choice: ");
+                
+                choice = int.Parse(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        manager.AddAddressBook();
+                        break;
+
+                    case 2:
+                        AddressBookUtility book = manager.SelectAddressBook();
+                        if (book != null)
+                        {
+                            ShowAddressBookMenu(book);
+                        }
+                        break;
+
+                    case 3:
+                        manager.ListAddressBooks();
+                        break;
+
+                    case 4:
+                        Console.WriteLine("Exiting...");
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        break;
+                }
+
+            } while (choice != 4);
+        }
+
+        private void ShowAddressBookMenu(AddressBookUtility utility)
         {
             int choice;
 
@@ -23,11 +64,11 @@ namespace AddressBookSystem
                 Console.WriteLine("\n--- Address Book Menu ---");
                 Console.WriteLine("1. Add Contact");
                 Console.WriteLine("2. Add Multiple Contacts");
-                Console.WriteLine("3. Edit Contact by Name");
-                Console.WriteLine("4. Delete Contact by Name");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("3. Edit Contact");
+                Console.WriteLine("4. Delete Contact");
+                Console.WriteLine("5. Back");
+                Console.Write("Enter choice: ");
 
-                Console.Write("Enter your choice: ");
                 choice = int.Parse(Console.ReadLine());
 
                 switch (choice)
@@ -46,14 +87,6 @@ namespace AddressBookSystem
 
                     case 4:
                         utility.DeleteAddressByName();
-                        break;
-
-                    case 5:
-                        Console.WriteLine("Exiting Address Book...");
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid choice. Try again.");
                         break;
                 }
 

@@ -4,13 +4,14 @@ namespace AddressBookSystem
 {
     public class AddressBookMain
     {
-        // Start method called from Program.cs
         public void Start()
         {
-            Console.WriteLine("Welcome to Address Book System");
+            // Use AddressBookManagerUtility (Dictionary-based)
+            AddressBookManagerUtility manager = new AddressBookManagerUtility();
 
-            AddressBookUtility utility = new AddressBookUtility(10); // capacity = 10
-            Menu menu = new Menu(utility);
+            // Pass the manager to the existing Menu
+            Menu menu = new Menu(manager);
+
             menu.ShowMenu();
         }
     }
