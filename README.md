@@ -451,3 +451,154 @@ Gained clarity and confidence in OOP fundamentals
 Improved problem-solving through real-world scenarios
 
 Understood areas of improvement through mentor feedback
+
+
+---
+
+📅 Day 18 – January 7, 2026
+
+🧩 Topics Covered
+
+Linked Lists in DSA: Singly, Doubly, and Circular
+
+Linked list operations: insertion, deletion, traversal, search
+
+Problem solving using linked lists
+
+✅ Work Done
+
+Learned linked list concepts and types in detail
+
+Implemented key linked list operations for each type
+
+Solved real-life and scenario-based problems using linked lists
+
+🎯 What I Learned
+
+Differences between various types of linked lists
+
+Practical implementation of core linked list operations
+
+Applying linked lists to solve real-world problems
+
+---
+
+📅 Day 19 – January 8, 2026
+
+🧩 Topics Covered
+
+Stack: concepts and operations
+
+Queue: types and working mechanism
+
+HashMap and hashing concepts
+
+Mini project: Smart Home Appliance System
+
+✅ Work Done
+
+Learned stack, queue, hashmap, and hashing concepts in DSA
+
+Solved multiple problems using stack and queue operations
+
+Practiced hashmap usage and hashing logic through coding exercises
+
+Built a Smart Home Appliance System applying DSA and OOP principles
+
+🎯 What I Learned
+
+When and why to use stack, queue, and hashmap
+
+How hashing enables efficient data storage and retrieval
+
+Applying DSA concepts in real-world mini projects
+
+---
+
+📅 Day 20 – January 9, 2026
+
+🧩 Topics Covered
+
+Sorting algorithms and techniques
+
+Scenario-based application development
+
+✅ Work Done
+
+Built an ATM Dispenser program as a scenario-based application
+
+Developed a Fitness Tracker App using real-life use cases
+
+Learned and implemented different sorting algorithms in code
+
+🎯 What I Learned
+
+Understanding and comparing various sorting techniques
+
+Applying sorting algorithms to practical scenarios
+
+Designing real-life applications using logical problem-solving
+
+---
+
+📅 Day 21 – January 10, 2026
+
+🧩 Topics Covered
+
+Weekly revision of DSA concepts
+
+LeetCode array-based problems
+
+✅ Work Done
+
+Revised all DSA topics covered during the week
+
+Solved multiple array problems on LeetCode to improve problem-solving skills
+
+🎯 What I Learned
+
+Strengthened understanding of core DSA concepts
+
+Improved efficiency in solving array-based problems
+
+Gained confidence through consistent practice
+
+---
+
+📅 Day 22 – January 12, 2026
+
+🧩 Topics Covered
+
+Searching algorithms: Linear Search and Binary Search
+
+String vs StringBuilder: differences and use cases
+
+BufferedReader in C# for efficient input handling
+
+Scenario-based problem solving
+
+✅ Work Done
+
+Practiced linear and binary search algorithms
+
+Compared String and StringBuilder in C#
+
+Explored BufferedReader for efficient input reading
+
+Solved scenario-based problems:
+
+LoanBuddy – Loan Approval Automation
+
+Metal Factory Pipe Cutting
+
+Custom Furniture Manufacturing
+
+🎯 What I Learned
+
+Choosing the right search algorithm based on data size
+
+When to use String vs StringBuilder for performance
+
+Handling input efficiently in real-world applications
+
+Applying algorithms to practical scenarios
