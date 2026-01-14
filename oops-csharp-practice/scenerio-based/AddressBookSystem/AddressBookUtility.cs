@@ -3,13 +3,12 @@ using System;
 namespace AddressBookSystem
 {
     // Utility class to manage Address Book contacts
-    public class AddressBookUtility
+    public class AddressBookUtility : IAddressBookUtility
     {
-        private Address[] contacts;  // array to store Address objects
-        private int count;           // tracks number of contacts added
-        private int capacity;        // maximum number of contacts
+        private Address[] contacts;
+        private int count;
+        private int capacity;
 
-        // Constructor initializes array with given capacity
         public AddressBookUtility(int capacity)
         {
             this.capacity = capacity;
@@ -17,7 +16,7 @@ namespace AddressBookSystem
             count = 0;
         }
 
-        // UC2: Add a new Address (contact) to the Address Book
+        // UC2: Add a new Address
         public void AddAddress()
         {
             if (count >= capacity)
@@ -26,7 +25,6 @@ namespace AddressBookSystem
                 return;
             }
 
-            // Read details from console
             Console.Write("Enter First Name: ");
             string firstName = Console.ReadLine();
 
@@ -34,7 +32,7 @@ namespace AddressBookSystem
             string lastName = Console.ReadLine();
 
             Console.Write("Enter Address: ");
-            string address = Console.ReadLine();
+            string addressLine = Console.ReadLine();
 
             Console.Write("Enter City: ");
             string city = Console.ReadLine();
@@ -51,33 +49,27 @@ namespace AddressBookSystem
             Console.Write("Enter Email: ");
             string email = Console.ReadLine();
 
-            // Create Address object
-            Address newAddress = new Address(firstName, lastName, address, city, state, zip, phoneNumber, email);
-
-            // Add to array
-            contacts[count] = newAddress;
+            contacts[count] = new Address(firstName, lastName, addressLine, city, state, zip, phoneNumber, email);
             count++;
 
             Console.WriteLine("Contact added successfully!");
         }
 
-        // Uc3: Edit an existing contact by first name
-        public void EditAddress()
+        // UC3: Edit existing contact by first name
+        public void EditAddressByName()
         {
             Console.Write("Enter the First Name of the contact to edit: ");
             string firstName = Console.ReadLine();
+
             for (int i = 0; i < count; i++)
             {
                 if (contacts[i].FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine("Editing contact: " + contacts[i].GetDetails());
-
-                    // Read new details
                     Console.Write("Enter new Last Name: ");
                     contacts[i].LastName = Console.ReadLine();
 
                     Console.Write("Enter new Address: ");
-                    contacts[i].Address = Console.ReadLine();
+                    contacts[i].AddressLine = Console.ReadLine();
 
                     Console.Write("Enter new City: ");
                     contacts[i].City = Console.ReadLine();
@@ -98,30 +90,48 @@ namespace AddressBookSystem
                     return;
                 }
             }
+
             Console.WriteLine("Contact with the given first name not found.");
         }
 
         // UC4: Delete a contact by first name
-        public void DeleteAddress()
+        public void DeleteAddressByName()
         {
             Console.Write("Enter the First Name of the contact to delete: ");
-            string searchName  = Console.ReadLine();
+            string searchName = Console.ReadLine();
+
             for (int i = 0; i < count; i++)
             {
-                if (contacts[i].FirstName.Equals(searchName , StringComparison.OrdinalIgnoreCase))
+                if (contacts[i].FirstName.Equals(searchName, StringComparison.OrdinalIgnoreCase))
                 {
-                    // Shift contacts to remove the deleted one
                     for (int j = i; j < count - 1; j++)
                     {
                         contacts[j] = contacts[j + 1];
                     }
-                    contacts[count - 1] = null; // Clear last entry
+
+                    contacts[count - 1] = null;
                     count--;
+
                     Console.WriteLine("Contact deleted successfully!");
                     return;
                 }
             }
+
             Console.WriteLine("Contact with the given first name not found.");
+        }
+
+        // UC5: Add multiple contacts
+        public void AddMultipleAddresses()
+        {
+            char choice;
+
+            do
+            {
+                AddAddress();
+                Console.Write("Do you want to add another contact? (y/n): ");
+                choice = Console.ReadLine().ToLower()[0];
+
+            } while (choice == 'y' && count < capacity);
         }
     }
 }
