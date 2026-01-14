@@ -17,7 +17,7 @@ namespace AddressBookSystem
             count = 0;
         }
 
-        // UC1: Add a new Address (contact) to the Address Book
+        // UC2: Add a new Address (contact) to the Address Book
         public void AddAddress()
         {
             if (count >= capacity)
@@ -59,6 +59,46 @@ namespace AddressBookSystem
             count++;
 
             Console.WriteLine("Contact added successfully!");
+        }
+
+        // Uc3: Edit an existing contact by first name
+        public void EditAddress()
+        {
+            Console.Write("Enter the First Name of the contact to edit: ");
+            string firstName = Console.ReadLine();
+            for (int i = 0; i < count; i++)
+            {
+                if (contacts[i].FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("Editing contact: " + contacts[i].GetDetails());
+
+                    // Read new details
+                    Console.Write("Enter new Last Name: ");
+                    contacts[i].LastName = Console.ReadLine();
+
+                    Console.Write("Enter new Address: ");
+                    contacts[i].Address = Console.ReadLine();
+
+                    Console.Write("Enter new City: ");
+                    contacts[i].City = Console.ReadLine();
+
+                    Console.Write("Enter new State: ");
+                    contacts[i].State = Console.ReadLine();
+
+                    Console.Write("Enter new Zip Code: ");
+                    contacts[i].Zip = Console.ReadLine();
+
+                    Console.Write("Enter new Phone Number: ");
+                    contacts[i].PhoneNumber = Console.ReadLine();
+
+                    Console.Write("Enter new Email: ");
+                    contacts[i].Email = Console.ReadLine();
+
+                    Console.WriteLine("Contact updated successfully!");
+                    return;
+                }
+            }
+            Console.WriteLine("Contact with the given first name not found.");
         }
     }
 }
