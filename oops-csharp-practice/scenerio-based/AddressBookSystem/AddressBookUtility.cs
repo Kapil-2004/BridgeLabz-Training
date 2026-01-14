@@ -100,5 +100,28 @@ namespace AddressBookSystem
             }
             Console.WriteLine("Contact with the given first name not found.");
         }
+
+        // UC4: Delete a contact by first name
+        public void DeleteAddress()
+        {
+            Console.Write("Enter the First Name of the contact to delete: ");
+            string searchName  = Console.ReadLine();
+            for (int i = 0; i < count; i++)
+            {
+                if (contacts[i].FirstName.Equals(searchName , StringComparison.OrdinalIgnoreCase))
+                {
+                    // Shift contacts to remove the deleted one
+                    for (int j = i; j < count - 1; j++)
+                    {
+                        contacts[j] = contacts[j + 1];
+                    }
+                    contacts[count - 1] = null; // Clear last entry
+                    count--;
+                    Console.WriteLine("Contact deleted successfully!");
+                    return;
+                }
+            }
+            Console.WriteLine("Contact with the given first name not found.");
+        }
     }
 }
