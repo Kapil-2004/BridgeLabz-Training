@@ -225,5 +225,40 @@ namespace AddressBookSystem
                 Console.WriteLine("No contacts found for state: " + state);
             }
         }
+
+        // UC10: Count persons by City or State - separate methods
+        // Count contacts by City
+        public void CountByCity()
+        {
+            Console.Write("Enter City: ");
+            string city = Console.ReadLine();
+
+            int countFound = 0;
+            for (int i = 0; i < count; i++)
+            {
+                if (contacts[i].City.Equals(city, StringComparison.OrdinalIgnoreCase))
+                {
+                    countFound++;
+                }
+            }   
+            Console.WriteLine("Number of contacts in city '" + city + "': " + countFound);      
+        }
+
+        // Count contacts by State
+        public void CountByState()
+        {
+            Console.Write("Enter State: ");
+            string state = Console.ReadLine();
+
+            int countFound = 0;
+            for (int i = 0; i < count; i++)
+            {
+                if (contacts[i].State.Equals(state, StringComparison.OrdinalIgnoreCase))
+                {
+                    countFound++;
+                }
+            }
+            Console.WriteLine("Number of contacts in state '" + state + "': " + countFound);
+        }
     }
 }

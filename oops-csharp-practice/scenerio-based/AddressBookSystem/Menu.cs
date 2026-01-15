@@ -22,7 +22,8 @@ namespace AddressBookSystem
                 Console.WriteLine("3. List Address Books");
                 Console.WriteLine("4. Search Person by City or State");
                 Console.WriteLine("5. Search Persons Either by City or State");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("6. Count Contacts by City or State");
+                Console.WriteLine("7. Exit");
                 Console.Write("Enter choice: ");
 
                 choice = int.Parse(Console.ReadLine());
@@ -83,6 +84,28 @@ namespace AddressBookSystem
                         }
 
                     case 6:
+                        AddressBookUtility bookToCount = manager.SelectAddressBook();
+                        if (bookToCount != null)
+                        {
+                            Console.WriteLine("Count by:\n1. City\n2. State");
+                            Console.Write("Enter choice: ");
+                            int subChoice = int.Parse(Console.ReadLine());  
+                            if (subChoice == 1)
+                            {
+                                bookToCount.CountByCity();
+                            }
+                            else if (subChoice == 2)
+                            {
+                                bookToCount.CountByState();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid choice.");
+                            }
+                        }
+                        break;
+
+                    case 7:
                         Console.WriteLine("Exiting...");
                         break;
 
@@ -91,7 +114,7 @@ namespace AddressBookSystem
                         break;
                 }
 
-            } while (choice != 6);
+            } while (choice != 7);
         }
 
         private void ShowAddressBookMenu(AddressBookUtility utility)
