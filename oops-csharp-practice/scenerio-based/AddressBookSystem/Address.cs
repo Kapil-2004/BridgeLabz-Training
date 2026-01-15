@@ -77,13 +77,13 @@ namespace AddressBookSystem
 
         public string GetDetails()
         {
-            return firstName + " " + lastName + ", " +
-                   addressLine + ", " +
-                   city + ", " +
-                   state + ", " +
-                   zip + ", " +
-                   phoneNumber + ", " +
-                   email;
+            return "Name: " + firstName + " " + lastName + ", " +
+                "Address: " + addressLine + ", " +
+                "City: " + city + ", " +
+                "State: " + state + ", " +
+                "Zip: " + zip + ", " +
+                "Phone: " + phoneNumber + ", " +
+                "Email: " + email;
         }
     }
 }

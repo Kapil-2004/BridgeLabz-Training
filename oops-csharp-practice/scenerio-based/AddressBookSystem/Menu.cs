@@ -20,7 +20,8 @@ namespace AddressBookSystem
                 Console.WriteLine("1. Add Address Book");
                 Console.WriteLine("2. Open Address Book");
                 Console.WriteLine("3. List Address Books");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("4. Search Person by City or State");
+                Console.WriteLine("5. Exit");
                 Console.Write("Enter choice: ");
                 
                 choice = int.Parse(Console.ReadLine());
@@ -44,6 +45,14 @@ namespace AddressBookSystem
                         break;
 
                     case 4:
+                        AddressBookUtility selectedBook = manager.SelectAddressBook();
+                        if (selectedBook != null)
+                        {
+                            selectedBook.SearchPersonByCityOrState();
+                        }
+                        break;
+
+                    case 5:
                         Console.WriteLine("Exiting...");
                         break;
 
@@ -52,7 +61,7 @@ namespace AddressBookSystem
                         break;
                 }
 
-            } while (choice != 4);
+            } while (choice != 5);
         }
 
         private void ShowAddressBookMenu(AddressBookUtility utility)

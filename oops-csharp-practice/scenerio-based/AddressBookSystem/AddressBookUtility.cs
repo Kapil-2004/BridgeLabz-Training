@@ -157,5 +157,30 @@ namespace AddressBookSystem
 
             } while (choice == 'y' && count < capacity);
         }
+
+        // UC8: Search person by City or State within this Address Book
+        public void SearchPersonByCityOrState()
+        {
+            Console.Write("Enter City: ");
+            string city = Console.ReadLine();
+
+            Console.Write("Enter State: ");
+            string state = Console.ReadLine();
+            bool found = false;
+
+            for (int i = 0; i < count; i++)
+            {
+                if (contacts[i].City.Equals(city, StringComparison.OrdinalIgnoreCase) ||
+                    contacts[i].State.Equals(state, StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine(contacts[i].GetDetails());
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                Console.WriteLine("No matching contacts found.");
+            }
+        }
     }
 }
