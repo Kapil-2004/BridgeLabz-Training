@@ -21,9 +21,10 @@ namespace AddressBookSystem
                 Console.WriteLine("2. Open Address Book");
                 Console.WriteLine("3. List Address Books");
                 Console.WriteLine("4. Search Person by City or State");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. Search Persons Either by City or State");
+                Console.WriteLine("6. Exit");
                 Console.Write("Enter choice: ");
-                
+
                 choice = int.Parse(Console.ReadLine());
 
                 switch (choice)
@@ -45,14 +46,43 @@ namespace AddressBookSystem
                         break;
 
                     case 4:
-                        AddressBookUtility selectedBook = manager.SelectAddressBook();
-                        if (selectedBook != null)
                         {
-                            selectedBook.SearchPersonByCityOrState();
+                            // Search person by city or state in a single address book
+                            AddressBookUtility bookToSearch = manager.SelectAddressBook();
+                            if (bookToSearch != null)
+                            {
+                                bookToSearch.SearchPersonByCityOrState();
+                            }
+                            break;
                         }
-                        break;
 
                     case 5:
+                        {
+                            // Search persons by City OR State separately
+                            AddressBookUtility bookToSearch = manager.SelectAddressBook();
+                            if (bookToSearch != null)
+                            {
+                                Console.WriteLine("Search by:\n1. City\n2. State");
+                                Console.Write("Enter choice: ");
+                                int subChoice = int.Parse(Console.ReadLine());
+
+                                if (subChoice == 1)
+                                {
+                                    bookToSearch.SearchByCity();
+                                }
+                                else if (subChoice == 2)
+                                {
+                                    bookToSearch.SearchByState();
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid choice.");
+                                }
+                            }
+                            break;
+                        }
+
+                    case 6:
                         Console.WriteLine("Exiting...");
                         break;
 
@@ -61,7 +91,7 @@ namespace AddressBookSystem
                         break;
                 }
 
-            } while (choice != 5);
+            } while (choice != 6);
         }
 
         private void ShowAddressBookMenu(AddressBookUtility utility)

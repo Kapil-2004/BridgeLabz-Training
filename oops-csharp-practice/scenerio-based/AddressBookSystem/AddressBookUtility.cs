@@ -182,5 +182,48 @@ namespace AddressBookSystem
                 Console.WriteLine("No matching contacts found.");
             }
         }
+
+        // UC9: search persons by City or State - separate methods
+        // Search persons by City
+        public void SearchByCity()
+        {
+            Console.Write("Enter City: ");
+            string city = Console.ReadLine();
+
+            bool found = false;
+            for (int i = 0; i < count; i++)
+            {
+                if (contacts[i].City.Equals(city, StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine(contacts[i].GetDetails());
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                Console.WriteLine("No contacts found for city: " + city);
+            }
+        }
+
+        // Search persons by State
+        public void SearchByState()
+        {
+            Console.Write("Enter State: ");
+            string state = Console.ReadLine();
+
+            bool found = false;
+            for (int i = 0; i < count; i++)
+            {
+                if (contacts[i].State.Equals(state, StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine(contacts[i].GetDetails());
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                Console.WriteLine("No contacts found for state: " + state);
+            }
+        }
     }
 }
