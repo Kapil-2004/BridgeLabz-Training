@@ -31,6 +31,13 @@ namespace AddressBookSystem
             Console.Write("Enter Last Name: ");
             string lastName = Console.ReadLine();
 
+            // UC7 Duplicate validation
+            if (IsDuplicate(firstName, lastName))
+            {
+                Console.WriteLine("Duplicate entry found. Contact already exists.");
+                return;
+            }
+
             Console.Write("Enter Address: ");
             string addressLine = Console.ReadLine();
 
@@ -49,10 +56,27 @@ namespace AddressBookSystem
             Console.Write("Enter Email: ");
             string email = Console.ReadLine();
 
-            contacts[count] = new Address(firstName, lastName, addressLine, city, state, zip, phoneNumber, email);
-            count++;
+            Address newAddress = new Address(
+                firstName, lastName, addressLine, city, state, zip, phoneNumber, email
+            );
 
+            contacts[count] = newAddress;
+            count++;
             Console.WriteLine("Contact added successfully!");
+        }
+
+        // UC7: Check duplicate person using First Name and Last Name
+        private bool IsDuplicate(string firstName, string lastName)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (contacts[i].FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase) &&
+                    contacts[i].LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         // UC3: Edit existing contact by first name
