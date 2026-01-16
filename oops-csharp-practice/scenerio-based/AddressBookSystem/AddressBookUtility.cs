@@ -168,6 +168,8 @@ namespace AddressBookSystem
             string state = Console.ReadLine();
             bool found = false;
 
+            SortByPersonName();
+
             for (int i = 0; i < count; i++)
             {
                 if (contacts[i].City.Equals(city, StringComparison.OrdinalIgnoreCase) ||
@@ -190,6 +192,8 @@ namespace AddressBookSystem
             Console.Write("Enter City: ");
             string city = Console.ReadLine();
 
+            SortByPersonName();
+
             bool found = false;
             for (int i = 0; i < count; i++)
             {
@@ -210,6 +214,8 @@ namespace AddressBookSystem
         {
             Console.Write("Enter State: ");
             string state = Console.ReadLine();
+
+            SortByPersonName();
 
             bool found = false;
             for (int i = 0; i < count; i++)
@@ -259,6 +265,27 @@ namespace AddressBookSystem
                 }
             }
             Console.WriteLine("Number of contacts in state '" + state + "': " + countFound);
+        }
+
+        // UC11: Sort contacts alphabetically by FirstName, then LastName
+        private void SortByPersonName()
+        {
+            for (int i = 0; i < count - 1; i++)
+            {
+                for (int j = i + 1; j < count; j++)
+                {
+                    int firstNameCompare =
+                        string.Compare(contacts[i].FirstName, contacts[j].FirstName, true);
+                    if (firstNameCompare > 0 ||
+                        (firstNameCompare == 0 &&
+                        string.Compare(contacts[i].LastName, contacts[j].LastName, true) > 0))
+                    {
+                        Address temp = contacts[i];
+                        contacts[i] = contacts[j];
+                        contacts[j] = temp;
+                    }
+                }
+            }
         }
     }
 }
