@@ -602,3 +602,97 @@ When to use String vs StringBuilder for performance
 Handling input efficiently in real-world applications
 
 Applying algorithms to practical scenarios
+
+---
+
+📅 Day 23 – January 13, 2026
+
+🧩 Topics Covered
+
+Run-time analysis and algorithm efficiency
+
+Time complexity comparison of algorithms
+
+Scenario-based problem solving
+
+LeetCode practice
+
+✅ Work Done
+
+Learned run-time analysis and compared time complexities of algorithms
+
+Solved scenario-based projects:
+
+BookBuddy – Digital Bookshelf App
+
+CinemaTime – Movie Schedule Manager
+
+Practiced multiple LeetCode problems to improve algorithmic thinking
+
+🎯 What I Learned
+
+Analyzing and comparing algorithm efficiency
+
+Selecting optimal algorithms for real-world use cases
+
+Strengthening problem-solving through practice
+
+---
+
+📅 Day 24 – January 14, 2026
+
+🧩 Topics Covered
+
+Console-based Address Book System
+
+Feature implementation: add, edit, delete, search, view, count, sort contacts
+
+Menu-driven interface for managing multiple address books
+
+LeetCode practice
+
+✅ Work Done
+
+Developed a complete Address Book System supporting multiple address books and contacts
+
+Implemented all core features including CRUD operations, counting, and sorting
+
+Enabled a menu-driven interface for easy user interaction
+
+Practiced LeetCode problems to improve coding skills
+
+🎯 What I Learned
+
+Designing and managing larger console applications
+
+Structuring features for scalability and usability
+
+Combining DSA, OOP, and problem-solving in one project
+
+---
+
+📅 Day 25 – January 15, 2026
+
+🧩 Topics Covered
+
+Console-based Address Book System
+
+Feature implementation: add, edit, delete, search, view, count, sort contacts
+
+Menu-driven interface for managing multiple address books
+
+✅ Work Done
+
+Successfully completed the console-based Address Book System supporting multiple address books and contacts
+
+Implemented all core features including CRUD operations, counting, and sorting
+
+Enabled a menu-driven interface for smooth and user-friendly interaction
+
+🎯 What I Learned
+
+Designing and managing larger console applications from start to completion
+
+Structuring features for scalability and usability
+
+Effectively combining DSA, OOP, and problem-solving in a single project
