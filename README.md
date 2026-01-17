@@ -696,3 +696,57 @@ Designing and managing larger console applications from start to completion
 Structuring features for scalability and usability
 
 Effectively combining DSA, OOP, and problem-solving in a single project
+
+---
+
+📅 Day 26 – January 16, 2026
+
+🧩 Topics Covered
+
+Advanced DSA practice using multiple data structures
+
+Singly and circular linked lists
+
+Custom implementation of HashMap and Queue
+
+✅ Work Done
+
+Solved scenario-based problems including Library-Organiz-Story and Traffic Manager
+
+Implemented custom data structures: singly linked list, circular linked list, HashMap, and Queue
+
+Combined multiple DSA concepts to build complete, scenario-based solutions
+
+🎯 What I Learned
+
+Integrating multiple data structures to solve complex problems
+
+Strengthening understanding through custom implementations
+
+Applying DSA concepts effectively in real-world scenarios
+
+---
+
+📅 Day 27 – January 17, 2026
+
+🧩 Topics Covered
+
+Sorting algorithms in real-world scenarios
+
+Revision of DSA and OOP concepts
+
+✅ Work Done
+
+Built a Fitness Tracker App using sorting algorithms for data organization and analysis
+
+Implemented Flash Dealz App to sort products based on discounts and priority
+
+Revised all key DSA and OOP concepts covered so far
+
+🎯 What I Learned
+
+Practical application of sorting algorithms in real-life use cases
+
+Improved clarity on previously learned DSA and OOP concepts
+
+Strengthened problem-solving through revision
