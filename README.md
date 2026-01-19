@@ -750,3 +750,33 @@ Practical application of sorting algorithms in real-life use cases
 Improved clarity on previously learned DSA and OOP concepts
 
 Strengthened problem-solving through revision
+
+---
+
+📅 Day 28 – January 19, 2026
+
+🧩 Topics Covered
+
+Review of core OOPS and DSA concepts
+
+Generics in C# for type-safe and reusable code
+
+✅ Work Done
+
+Completed a comprehensive OOPS and DSA revision to strengthen fundamentals
+
+Learned and applied C# Generics in real-world scenarios
+
+Solved scenario-based projects:
+
+Parcel Management System
+
+Online Exam System (using generics)
+
+🎯 What I Learned
+
+Importance of revising fundamentals for stronger problem-solving
+
+Writing reusable and type-safe code using generics
+
+Applying generics in real-life project scenarios
