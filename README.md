@@ -780,3 +780,35 @@ Importance of revising fundamentals for stronger problem-solving
 Writing reusable and type-safe code using generics
 
 Applying generics in real-life project scenarios
+
+---
+
+📅 Day 29 – January 20, 2026
+
+🧩 Topics Covered
+
+C# Collections and their use cases
+
+Backtracking algorithm and recursive problem solving
+
+Scenario-based problem solving
+
+✅ Work Done
+
+Practiced major C# collections (List, Dictionary, HashSet, Queue, Stack, etc.) through multiple problems
+
+Learned and implemented backtracking algorithms
+
+Solved scenario-based projects:
+
+Aadhar Numbers Sorting
+
+Password Cracker Simulator
+
+🎯 What I Learned
+
+Choosing the right collection based on problem requirements
+
+Understanding recursion and backtracking techniques
+
+Applying advanced concepts to real-world scenarios
