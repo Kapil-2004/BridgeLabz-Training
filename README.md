@@ -126,6 +126,24 @@ Ensured all programs compiled and produced correct output
 
 ---
 
+📅 Day 5 – C# Access Modifiers & Concept Strengthening (20 Dec 2025)
+
+On 20 Dec (Day 5), I focused on access modifiers in C# and reinforced my understanding of core C# concepts through hands-on practice.
+
+🔹 Work Done
+
+Studied access modifiers: public, private, protected, internal
+
+Learned how access modifiers affect class, method, and variable visibility
+
+Strengthened overall C# fundamentals through practice exercises
+
+Practiced writing programs applying access control and proper structure
+
+Ensured all programs compiled correctly and produced expected results
+
+---
+
 📅 Day 6 – C# Control Flow Practice (22 Dec 2025)
 
 On 22 Dec (Day 6), I focused on C# control flow concepts and practiced multiple coding problems to strengthen logical thinking.
