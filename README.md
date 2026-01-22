@@ -840,3 +840,27 @@ Efficient file and data handling using streams
 Applying streams in real-world application scenarios
 
 Strengthening problem-solving through practical projects
+
+---
+
+📅 Day 31 – January 22, 2026
+
+🧩 Topics Covered
+
+Exception handling in C#: try-catch, finally, custom exceptions
+
+Revision of Collections, Generics, Streams, and Exception Handling
+
+✅ Work Done
+
+Learned and practiced exception handling to manage runtime errors effectively
+
+Attended a comprehensive revision session on Collections, Generics, Streams, and Exception Handling
+
+🎯 What I Learned
+
+Writing more reliable and fault-tolerant programs
+
+Handling runtime errors using structured exception handling
+
+Strengthening core concepts through focused revision
