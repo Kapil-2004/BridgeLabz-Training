@@ -864,3 +864,33 @@ Writing more reliable and fault-tolerant programs
 Handling runtime errors using structured exception handling
 
 Strengthening core concepts through focused revision
+
+---
+
+📅 Day 32 – January 27, 2026
+
+🧩 Topics Covered
+
+Regular Expressions (Regex) for pattern matching and validation
+
+Annotations (Attributes) in real-world scenarios
+
+Reflection for runtime metadata inspection
+
+Unit testing using NUnit and MSTest
+
+✅ Work Done
+
+Solved multiple problems using Regex for text validation
+
+Applied annotations and reflection to inspect and manipulate metadata
+
+Practiced unit testing with NUnit and MSTest to verify code functionality
+
+🎯 What I Learned
+
+Validating and processing text efficiently using Regex
+
+Using attributes and reflection for dynamic behavior
+
+Writing reliable code through proper unit testing
