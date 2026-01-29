@@ -1,0 +1,12 @@
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\NUnitTests\Code\bin\Debug\net10.0\Code.deps.json
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\NUnitTests\Code\bin\Debug\net10.0\Code.dll
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\NUnitTests\Code\bin\Debug\net10.0\Code.pdb
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\NUnitTests\Code\obj\Debug\net10.0\Code.GeneratedMSBuildEditorConfig.editorconfig
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\NUnitTests\Code\obj\Debug\net10.0\Code.AssemblyInfoInputs.cache
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\NUnitTests\Code\obj\Debug\net10.0\Code.AssemblyInfo.cs
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\NUnitTests\Code\obj\Debug\net10.0\Code.csproj.CoreCompileInputs.cache
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\NUnitTests\Code\obj\Debug\net10.0\Code.sourcelink.json
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\NUnitTests\Code\obj\Debug\net10.0\Code.dll
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\NUnitTests\Code\obj\Debug\net10.0\refint\Code.dll
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\NUnitTests\Code\obj\Debug\net10.0\Code.pdb
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\NUnitTests\Code\obj\Debug\net10.0\ref\Code.dll
