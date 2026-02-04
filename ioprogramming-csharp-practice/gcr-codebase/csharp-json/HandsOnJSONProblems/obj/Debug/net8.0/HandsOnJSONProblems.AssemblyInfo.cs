@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HandsOnJSONProblems")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0823116c2c597a1da222c0fd91e64524053280df")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c2e7f2c6332e9a53dad867d07cb6623b8220f726")]
 [assembly: System.Reflection.AssemblyProductAttribute("HandsOnJSONProblems")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HandsOnJSONProblems")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
