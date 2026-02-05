@@ -894,3 +894,168 @@ Validating and processing text efficiently using Regex
 Using attributes and reflection for dynamic behavior
 
 Writing reliable code through proper unit testing
+
+---
+
+📅 Day 33 – January 28, 2026
+
+🧩 Topics Covered
+
+File I/O programming in C#: reading and writing files
+
+Practical file handling using streams and file operations
+
+Scenario-based applications using I/O concepts
+
+✅ Work Done
+
+Learned and practiced File I/O in C# through multiple coding problems
+
+Implemented real-world scenarios using file operations:
+
+Aero-Vigil – aviation data handling and monitoring
+
+Validations on Bank Account – file-based validation and record management
+
+🎯 What I Learned
+
+Working with files efficiently using C# I/O concepts
+
+Applying streams and file operations in real-world use cases
+
+Building practical solutions using file-based data handling
+
+---
+
+📅 Day 36 – January 29, 2026
+
+🧩 Topics Covered
+
+Scenario-based application development
+
+JSON data handling: structure and basic operations
+
+Data integration using structured formats
+
+✅ Work Done
+
+Developed scenario-based applications:
+
+Ocean-Fleet-App – marine fleet data management and performance tracking
+
+Stream-Buzz – streaming analytics and data processing system
+
+Learned JSON fundamentals, including structure and basic usage for storage and data exchange
+
+🎯 What I Learned
+
+Working with structured data formats like JSON
+
+Applying JSON handling in real-world applications
+
+Building scenario-based projects using data integration concepts
+
+---
+
+📅 Day 37 – January 30, 2026
+
+🧩 Topics Covered
+
+Weekly revision of all topics
+
+Scenario-based problem solving
+
+✅ Work Done
+
+Revised all key concepts learned during the week
+
+Solved a scenario-based project:
+
+Lexical Logistics – implemented a real-world logistics solution using learned concepts
+
+🎯 What I Learned
+
+Strengthened understanding through revision
+
+Improved confidence in applying concepts to real-world problems
+
+---
+
+📅 Day 38 – January 31, 2026
+
+🧩 Topics Covered
+
+JSON data handling in C#: reading, writing, and processing
+
+Scenario-based project implementation
+
+✅ Work Done
+
+Solved multiple problems on JSON data handling in C#
+
+Completed a scenario-based project:
+
+Future Logistics Billing System – implemented billing and transport management using JSON data
+
+🎯 What I Learned
+
+Working with JSON files effectively in C#
+
+Applying JSON operations in real-world project scenarios
+
+---
+
+📅 Day 39 – February 2, 2026
+
+🧩 Topics Covered
+
+Design principles and design patterns for maintainable code
+
+Async programming and multithreading in C#
+
+Delegates for callbacks and event handling
+
+✅ Work Done
+
+Studied key design principles and implemented design patterns
+
+Learned async programming and multithreading concepts in C#
+
+Practiced delegates for event-driven programming
+
+
+🎯 What I Learned
+
+Writing cleaner and more maintainable code using patterns and principles
+
+Understanding concurrency using async and multithreading
+
+Using delegates to build flexible and event-based logic
+
+---
+
+📅 Day 40 – February 3, 2026
+
+🧩 Topics Covered
+
+Design principles and design patterns
+
+Async programming and multithreading in C#
+
+Delegates for callbacks and event handling
+
+Address Book System enhancements (collections, generics, exception handling, utilities)
+
+✅ Work Done
+
+Studied key design principles and implemented design patterns
+
+Learned async programming and multithreading concepts in C#
+
+Practiced delegates for event-driven programming
+
+Enhanced the Address Book System using collections, exception handling, generics, and added three new utility features
+
+---
+
+
