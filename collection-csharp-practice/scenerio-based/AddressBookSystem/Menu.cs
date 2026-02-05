@@ -48,7 +48,6 @@ namespace AddressBookSystem
 
                     case 4:
                         {
-                            // Search person by city or state in a single address book
                             AddressBookUtility bookToSearch = manager.SelectAddressBook();
                             if (bookToSearch != null)
                             {
@@ -59,7 +58,6 @@ namespace AddressBookSystem
 
                     case 5:
                         {
-                            // Search persons by City OR State separately
                             AddressBookUtility bookToSearch = manager.SelectAddressBook();
                             if (bookToSearch != null)
                             {
@@ -129,7 +127,9 @@ namespace AddressBookSystem
                 Console.WriteLine("3. Edit Contact");
                 Console.WriteLine("4. Delete Contact");
                 Console.WriteLine("5. Sort Contacts (City/State/Zip)");
-                Console.WriteLine("6. Back");
+                Console.WriteLine("6. Save Contacts To File");
+                Console.WriteLine("7. Load Contacts From File");
+                Console.WriteLine("8. Back");
                 Console.Write("Enter choice: ");
 
                 choice = int.Parse(Console.ReadLine());
@@ -174,9 +174,17 @@ namespace AddressBookSystem
                             Console.WriteLine("Invalid choice.");
                         }
                         break;
+
+                    case 6:
+                        utility.WriteContactsToFile();
+                        break;
+
+                    case 7:
+                        utility.ReadContactsFromFile();
+                        break;
                 }
 
-            } while (choice != 6);
+            } while (choice != 8);
         }
     }
 }

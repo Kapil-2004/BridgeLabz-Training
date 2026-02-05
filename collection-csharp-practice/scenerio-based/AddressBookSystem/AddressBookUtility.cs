@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 namespace AddressBookSystem
 {
@@ -8,6 +9,8 @@ namespace AddressBookSystem
         private Address[] contacts;
         private int count;
         private int capacity;
+
+        private string filePath = "AddressBookContacts.txt";
 
         public AddressBookUtility(int capacity)
         {
@@ -185,8 +188,7 @@ namespace AddressBookSystem
             }
         }
 
-        // UC9: search persons by City or State - separate methods
-        // Search persons by City
+        // UC9: Search persons by City
         public void SearchByCity()
         {
             Console.Write("Enter City: ");
@@ -209,7 +211,7 @@ namespace AddressBookSystem
             }
         }
 
-        // Search persons by State
+        // UC9: Search persons by State
         public void SearchByState()
         {
             Console.Write("Enter State: ");
@@ -232,8 +234,7 @@ namespace AddressBookSystem
             }
         }
 
-        // UC10: Count persons by City or State - separate methods
-        // Count contacts by City
+        // UC10: Count contacts by City
         public void CountByCity()
         {
             Console.Write("Enter City: ");
@@ -250,7 +251,7 @@ namespace AddressBookSystem
             Console.WriteLine("Number of contacts in city '" + city + "': " + countFound);
         }
 
-        // Count contacts by State
+        // UC10: Count contacts by State
         public void CountByState()
         {
             Console.Write("Enter State: ");
@@ -276,9 +277,10 @@ namespace AddressBookSystem
                 {
                     int firstNameCompare =
                         string.Compare(contacts[i].FirstName, contacts[j].FirstName, true);
+
                     if (firstNameCompare > 0 ||
                         (firstNameCompare == 0 &&
-                        string.Compare(contacts[i].LastName, contacts[j].LastName, true) > 0))
+                         string.Compare(contacts[i].LastName, contacts[j].LastName, true) > 0))
                     {
                         Address temp = contacts[i];
                         contacts[i] = contacts[j];
@@ -344,6 +346,64 @@ namespace AddressBookSystem
 
             Console.WriteLine("Contacts sorted by Zip successfully!");
         }
+
+        // UC13: Write contacts to file
+        public void WriteContactsToFile()
+        {
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    Address a = contacts[i];
+
+                    string line =
+                        a.FirstName + "|" +
+                        a.LastName + "|" +
+                        a.AddressLine + "|" +
+                        a.City + "|" +
+                        a.State + "|" +
+                        a.Zip + "|" +
+                        a.PhoneNumber + "|" +
+                        a.Email;
+
+                    writer.WriteLine(line);
+                }
+            }
+
+            Console.WriteLine("Contacts saved successfully to file: " + filePath);
+        }
+
+        // UC13: Read contacts from file
+        public void ReadContactsFromFile()
+        {
+            if (!File.Exists(filePath))
+            {
+                Console.WriteLine("File not found: " + filePath);
+                return;
+            }
+
+            string[] lines = File.ReadAllLines(filePath);
+
+            count = 0;
+            contacts = new Address[capacity];
+
+            for (int i = 0; i < lines.Length && count < capacity; i++)
+            {
+                string[] data = lines[i].Split('|');
+
+                if (data.Length == 8)
+                {
+                    Address a = new Address(
+                        data[0], data[1], data[2], data[3],
+                        data[4], data[5], data[6], data[7]
+                    );
+
+                    contacts[count] = a;
+                    count++;
+                }
+            }
+
+            Console.WriteLine("Contacts loaded successfully from file!");
+        }
     }
 }
-

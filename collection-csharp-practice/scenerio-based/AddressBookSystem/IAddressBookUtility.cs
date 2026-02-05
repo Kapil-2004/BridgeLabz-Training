@@ -21,5 +21,9 @@ namespace AddressBookSystem
         void SortByCity();
         void SortByState();
         void SortByZip();
+
+        // UC13: File IO - Write and Read contacts
+        void WriteContactsToFile();
+        void ReadContactsFromFile();
     }
 }
