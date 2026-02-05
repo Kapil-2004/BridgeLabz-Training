@@ -25,5 +25,9 @@ namespace AddressBookSystem
         // UC13: File IO - Write and Read contacts
         void WriteContactsToFile();
         void ReadContactsFromFile();
+
+        // UC14 (CSV File IO)
+        void WriteContactsToCSV();
+        void ReadContactsFromCSV();
     }
 }

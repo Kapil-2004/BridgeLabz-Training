@@ -88,6 +88,7 @@ namespace AddressBookSystem
                             Console.WriteLine("Count by:\n1. City\n2. State");
                             Console.Write("Enter choice: ");
                             int subChoice = int.Parse(Console.ReadLine());
+
                             if (subChoice == 1)
                             {
                                 bookToCount.CountByCity();
@@ -129,7 +130,9 @@ namespace AddressBookSystem
                 Console.WriteLine("5. Sort Contacts (City/State/Zip)");
                 Console.WriteLine("6. Save Contacts To File");
                 Console.WriteLine("7. Load Contacts From File");
-                Console.WriteLine("8. Back");
+                Console.WriteLine("8. Save Contacts To CSV");
+                Console.WriteLine("9. Load Contacts From CSV");
+                Console.WriteLine("10. Back");
                 Console.Write("Enter choice: ");
 
                 choice = int.Parse(Console.ReadLine());
@@ -182,9 +185,20 @@ namespace AddressBookSystem
                     case 7:
                         utility.ReadContactsFromFile();
                         break;
+
+                    case 8:
+                        utility.WriteContactsToCSV();
+                        break;
+
+                    case 9:
+                        utility.ReadContactsFromCSV();
+                        break;
+
+                    case 10:
+                        break;
                 }
 
-            } while (choice != 8);
+            } while (choice != 10);
         }
     }
 }

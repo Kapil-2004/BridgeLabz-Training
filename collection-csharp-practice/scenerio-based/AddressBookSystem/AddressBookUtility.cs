@@ -405,5 +405,70 @@ namespace AddressBookSystem
 
             Console.WriteLine("Contacts loaded successfully from file!");
         }
+
+        // UC14: Write contacts to CSV file
+        public void WriteContactsToCSV()
+        {
+            string csvPath = "AddressBookContacts.csv";
+
+            using (StreamWriter writer = new StreamWriter(csvPath))
+            {
+                writer.WriteLine("FirstName,LastName,Address,City,State,Zip,PhoneNumber,Email");
+
+                for (int i = 0; i < count; i++)
+                {
+                    Address a = contacts[i];
+
+                    string line =
+                        a.FirstName + "," +
+                        a.LastName + "," +
+                        a.AddressLine + "," +
+                        a.City + "," +
+                        a.State + "," +
+                        a.Zip + "," +
+                        a.PhoneNumber + "," +
+                        a.Email;
+
+                    writer.WriteLine(line);
+                }
+            }
+
+            Console.WriteLine("Contacts saved successfully to CSV file: " + csvPath);
+        }
+
+        // UC14: Read contacts from CSV file
+        public void ReadContactsFromCSV()
+        {
+            string csvPath = "AddressBookContacts.csv";
+
+            if (!File.Exists(csvPath))
+            {
+                Console.WriteLine("CSV file not found: " + csvPath);
+                return;
+            }
+
+            string[] lines = File.ReadAllLines(csvPath);
+
+            count = 0;
+            contacts = new Address[capacity];
+
+            for (int i = 1; i < lines.Length && count < capacity; i++)
+            {
+                string[] data = lines[i].Split(',');
+
+                if (data.Length == 8)
+                {
+                    Address a = new Address(
+                        data[0], data[1], data[2], data[3],
+                        data[4], data[5], data[6], data[7]
+                    );
+
+                    contacts[count] = a;
+                    count++;
+                }
+            }
+
+            Console.WriteLine("Contacts loaded successfully from CSV file!");
+        }
     }
 }
