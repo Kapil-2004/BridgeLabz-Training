@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace AddressBookSystem
@@ -6,28 +7,17 @@ namespace AddressBookSystem
     // Utility class to manage Address Book contacts
     public class AddressBookUtility : IAddressBookUtility
     {
-        private Address[] contacts;
-        private int count;
-        private int capacity;
-
-        private string filePath = "AddressBookContacts.txt";
+        private List<Address> contacts;
 
         public AddressBookUtility(int capacity)
         {
-            this.capacity = capacity;
-            contacts = new Address[capacity];
-            count = 0;
+            // capacity is kept to not break your existing constructor usage
+            contacts = new List<Address>(capacity);
         }
 
         // UC2: Add a new Address
         public void AddAddress()
         {
-            if (count >= capacity)
-            {
-                Console.WriteLine("Address Book is full! Cannot add more contacts.");
-                return;
-            }
-
             Console.Write("Enter First Name: ");
             string firstName = Console.ReadLine();
 
@@ -63,15 +53,14 @@ namespace AddressBookSystem
                 firstName, lastName, addressLine, city, state, zip, phoneNumber, email
             );
 
-            contacts[count] = newAddress;
-            count++;
+            contacts.Add(newAddress);
             Console.WriteLine("Contact added successfully!");
         }
 
         // UC7: Check duplicate person using First Name and Last Name
         private bool IsDuplicate(string firstName, string lastName)
         {
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < contacts.Count; i++)
             {
                 if (contacts[i].FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase) &&
                     contacts[i].LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase))
@@ -88,7 +77,7 @@ namespace AddressBookSystem
             Console.Write("Enter the First Name of the contact to edit: ");
             string firstName = Console.ReadLine();
 
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < contacts.Count; i++)
             {
                 if (contacts[i].FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase))
                 {
@@ -127,18 +116,11 @@ namespace AddressBookSystem
             Console.Write("Enter the First Name of the contact to delete: ");
             string searchName = Console.ReadLine();
 
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < contacts.Count; i++)
             {
                 if (contacts[i].FirstName.Equals(searchName, StringComparison.OrdinalIgnoreCase))
                 {
-                    for (int j = i; j < count - 1; j++)
-                    {
-                        contacts[j] = contacts[j + 1];
-                    }
-
-                    contacts[count - 1] = null;
-                    count--;
-
+                    contacts.RemoveAt(i);
                     Console.WriteLine("Contact deleted successfully!");
                     return;
                 }
@@ -158,7 +140,7 @@ namespace AddressBookSystem
                 Console.Write("Do you want to add another contact? (y/n): ");
                 choice = Console.ReadLine().ToLower()[0];
 
-            } while (choice == 'y' && count < capacity);
+            } while (choice == 'y');
         }
 
         // UC8: Search person by City or State within this Address Book
@@ -173,7 +155,7 @@ namespace AddressBookSystem
 
             SortByPersonName();
 
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < contacts.Count; i++)
             {
                 if (contacts[i].City.Equals(city, StringComparison.OrdinalIgnoreCase) ||
                     contacts[i].State.Equals(state, StringComparison.OrdinalIgnoreCase))
@@ -188,7 +170,8 @@ namespace AddressBookSystem
             }
         }
 
-        // UC9: Search persons by City
+        // UC9: search persons by City or State - separate methods
+        // Search persons by City
         public void SearchByCity()
         {
             Console.Write("Enter City: ");
@@ -197,7 +180,7 @@ namespace AddressBookSystem
             SortByPersonName();
 
             bool found = false;
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < contacts.Count; i++)
             {
                 if (contacts[i].City.Equals(city, StringComparison.OrdinalIgnoreCase))
                 {
@@ -211,7 +194,7 @@ namespace AddressBookSystem
             }
         }
 
-        // UC9: Search persons by State
+        // Search persons by State
         public void SearchByState()
         {
             Console.Write("Enter State: ");
@@ -220,7 +203,7 @@ namespace AddressBookSystem
             SortByPersonName();
 
             bool found = false;
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < contacts.Count; i++)
             {
                 if (contacts[i].State.Equals(state, StringComparison.OrdinalIgnoreCase))
                 {
@@ -234,14 +217,15 @@ namespace AddressBookSystem
             }
         }
 
-        // UC10: Count contacts by City
+        // UC10: Count persons by City or State - separate methods
+        // Count contacts by City
         public void CountByCity()
         {
             Console.Write("Enter City: ");
             string city = Console.ReadLine();
 
             int countFound = 0;
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < contacts.Count; i++)
             {
                 if (contacts[i].City.Equals(city, StringComparison.OrdinalIgnoreCase))
                 {
@@ -251,14 +235,14 @@ namespace AddressBookSystem
             Console.WriteLine("Number of contacts in city '" + city + "': " + countFound);
         }
 
-        // UC10: Count contacts by State
+        // Count contacts by State
         public void CountByState()
         {
             Console.Write("Enter State: ");
             string state = Console.ReadLine();
 
             int countFound = 0;
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < contacts.Count; i++)
             {
                 if (contacts[i].State.Equals(state, StringComparison.OrdinalIgnoreCase))
                 {
@@ -271,111 +255,64 @@ namespace AddressBookSystem
         // UC11: Sort contacts alphabetically by FirstName, then LastName
         private void SortByPersonName()
         {
-            for (int i = 0; i < count - 1; i++)
+            contacts.Sort((a, b) =>
             {
-                for (int j = i + 1; j < count; j++)
-                {
-                    int firstNameCompare =
-                        string.Compare(contacts[i].FirstName, contacts[j].FirstName, true);
+                int firstCompare = string.Compare(a.FirstName, b.FirstName, true);
+                if (firstCompare != 0) return firstCompare;
 
-                    if (firstNameCompare > 0 ||
-                        (firstNameCompare == 0 &&
-                         string.Compare(contacts[i].LastName, contacts[j].LastName, true) > 0))
-                    {
-                        Address temp = contacts[i];
-                        contacts[i] = contacts[j];
-                        contacts[j] = temp;
-                    }
-                }
-            }
+                return string.Compare(a.LastName, b.LastName, true);
+            });
         }
 
-        // UC12: Sort contacts by City
+        // UC12: Sort the entries in the address book by City, State, or Zip
         public void SortByCity()
         {
-            for (int i = 0; i < count - 1; i++)
-            {
-                for (int j = i + 1; j < count; j++)
-                {
-                    if (string.Compare(contacts[i].City, contacts[j].City, true) > 0)
-                    {
-                        Address temp = contacts[i];
-                        contacts[i] = contacts[j];
-                        contacts[j] = temp;
-                    }
-                }
-            }
-
+            contacts.Sort((a, b) => string.Compare(a.City, b.City, true));
             Console.WriteLine("Contacts sorted by City successfully!");
         }
 
-        // UC12: Sort contacts by State
         public void SortByState()
         {
-            for (int i = 0; i < count - 1; i++)
-            {
-                for (int j = i + 1; j < count; j++)
-                {
-                    if (string.Compare(contacts[i].State, contacts[j].State, true) > 0)
-                    {
-                        Address temp = contacts[i];
-                        contacts[i] = contacts[j];
-                        contacts[j] = temp;
-                    }
-                }
-            }
-
+            contacts.Sort((a, b) => string.Compare(a.State, b.State, true));
             Console.WriteLine("Contacts sorted by State successfully!");
         }
 
-        // UC12: Sort contacts by Zip
         public void SortByZip()
         {
-            for (int i = 0; i < count - 1; i++)
-            {
-                for (int j = i + 1; j < count; j++)
-                {
-                    if (string.Compare(contacts[i].Zip, contacts[j].Zip, true) > 0)
-                    {
-                        Address temp = contacts[i];
-                        contacts[i] = contacts[j];
-                        contacts[j] = temp;
-                    }
-                }
-            }
-
+            contacts.Sort((a, b) => string.Compare(a.Zip, b.Zip, true));
             Console.WriteLine("Contacts sorted by Zip successfully!");
         }
 
-        // UC13: Write contacts to file
+        // UC13: Ability to Read or Write the Address Book with Persons Contact into a File using File IO
         public void WriteContactsToFile()
         {
+            string filePath = "AddressBookContacts.txt";
+
             using (StreamWriter writer = new StreamWriter(filePath))
             {
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < contacts.Count; i++)
                 {
                     Address a = contacts[i];
 
-                    string line =
-                        a.FirstName + "|" +
-                        a.LastName + "|" +
-                        a.AddressLine + "|" +
-                        a.City + "|" +
-                        a.State + "|" +
-                        a.Zip + "|" +
-                        a.PhoneNumber + "|" +
-                        a.Email;
-
-                    writer.WriteLine(line);
+                    writer.WriteLine(a.FirstName);
+                    writer.WriteLine(a.LastName);
+                    writer.WriteLine(a.AddressLine);
+                    writer.WriteLine(a.City);
+                    writer.WriteLine(a.State);
+                    writer.WriteLine(a.Zip);
+                    writer.WriteLine(a.PhoneNumber);
+                    writer.WriteLine(a.Email);
+                    writer.WriteLine("-----");
                 }
             }
 
             Console.WriteLine("Contacts saved successfully to file: " + filePath);
         }
 
-        // UC13: Read contacts from file
         public void ReadContactsFromFile()
         {
+            string filePath = "AddressBookContacts.txt";
+
             if (!File.Exists(filePath))
             {
                 Console.WriteLine("File not found: " + filePath);
@@ -384,29 +321,34 @@ namespace AddressBookSystem
 
             string[] lines = File.ReadAllLines(filePath);
 
-            count = 0;
-            contacts = new Address[capacity];
+            contacts.Clear();
 
-            for (int i = 0; i < lines.Length && count < capacity; i++)
+            int i = 0;
+            while (i < lines.Length)
             {
-                string[] data = lines[i].Split('|');
-
-                if (data.Length == 8)
+                if (lines[i] == "-----")
                 {
-                    Address a = new Address(
-                        data[0], data[1], data[2], data[3],
-                        data[4], data[5], data[6], data[7]
-                    );
-
-                    contacts[count] = a;
-                    count++;
+                    i++;
+                    continue;
                 }
+
+                string firstName = lines[i++];
+                string lastName = lines[i++];
+                string addressLine = lines[i++];
+                string city = lines[i++];
+                string state = lines[i++];
+                string zip = lines[i++];
+                string phone = lines[i++];
+                string email = lines[i++];
+
+                Address a = new Address(firstName, lastName, addressLine, city, state, zip, phone, email);
+                contacts.Add(a);
             }
 
             Console.WriteLine("Contacts loaded successfully from file!");
         }
 
-        // UC14: Write contacts to CSV file
+        // UC14: Ability to Read/Write the Address Book with Persons Contact as CSV File
         public void WriteContactsToCSV()
         {
             string csvPath = "AddressBookContacts.csv";
@@ -415,7 +357,7 @@ namespace AddressBookSystem
             {
                 writer.WriteLine("FirstName,LastName,Address,City,State,Zip,PhoneNumber,Email");
 
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < contacts.Count; i++)
                 {
                     Address a = contacts[i];
 
@@ -436,7 +378,6 @@ namespace AddressBookSystem
             Console.WriteLine("Contacts saved successfully to CSV file: " + csvPath);
         }
 
-        // UC14: Read contacts from CSV file
         public void ReadContactsFromCSV()
         {
             string csvPath = "AddressBookContacts.csv";
@@ -449,10 +390,9 @@ namespace AddressBookSystem
 
             string[] lines = File.ReadAllLines(csvPath);
 
-            count = 0;
-            contacts = new Address[capacity];
+            contacts.Clear();
 
-            for (int i = 1; i < lines.Length && count < capacity; i++)
+            for (int i = 1; i < lines.Length; i++)
             {
                 string[] data = lines[i].Split(',');
 
@@ -463,8 +403,7 @@ namespace AddressBookSystem
                         data[4], data[5], data[6], data[7]
                     );
 
-                    contacts[count] = a;
-                    count++;
+                    contacts.Add(a);
                 }
             }
 
