@@ -1058,4 +1058,21 @@ Enhanced the Address Book System using collections, exception handling, generics
 
 ---
 
+📅 Day 41 – February 4, 2026
+
+🧩 Topics Covered
+
+DBMS fundamentals
+
+SQL queries in SQL Server
+
+Address Book System enhancements (collections, generics, exception handling, utilities)
+
+✅ Work Done
+
+Attended a session on DBMS concepts and fundamentals
+
+Practiced SQL queries to understand database operations
+
+Enhanced the Address Book System using collections, exception handling, generics, and added three new utility features
 
