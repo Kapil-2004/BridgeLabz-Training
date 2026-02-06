@@ -28,17 +28,13 @@ namespace AddressBookSystem
         void CountByCity();
         void CountByState();
 
-        // UC12: Ability to sort the entries in the address book by City, State, or Zip
+        // UC11: Ability to sort the entries in the address book by City, State, or Zip
         void SortByCity();
         void SortByState();
         void SortByZip();
 
-        // UC13: Ability to Read or Write the Address Book with Persons Contact into a File using File IO
-        void WriteContactsToFile();
-        void ReadContactsFromFile();
-
-        // UC14: Ability to Read/Write the Address Book with Persons Contact as CSV File
-        void WriteContactsToCSV();
-        void ReadContactsFromCSV();
+        // UC13: Ability to Read/Write the Address Book with Persons Contact as CSV File
+        void WriteContactsToCSV(string filePath);
+        void ReadContactsFromCSV(string filePath);
     }
 }

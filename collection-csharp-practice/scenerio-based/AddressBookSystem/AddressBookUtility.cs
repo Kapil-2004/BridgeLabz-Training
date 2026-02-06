@@ -11,7 +11,7 @@ namespace AddressBookSystem
 
         public AddressBookUtility(int capacity)
         {
-            // capacity is kept to not break your existing constructor usage
+            // capacity kept so your existing manager code stays same
             contacts = new List<Address>(capacity);
         }
 
@@ -255,159 +255,138 @@ namespace AddressBookSystem
         // UC11: Sort contacts alphabetically by FirstName, then LastName
         private void SortByPersonName()
         {
-            contacts.Sort((a, b) =>
+            for (int i = 0; i < contacts.Count - 1; i++)
             {
-                int firstCompare = string.Compare(a.FirstName, b.FirstName, true);
-                if (firstCompare != 0) return firstCompare;
+                for (int j = i + 1; j < contacts.Count; j++)
+                {
+                    int firstNameCompare =
+                        string.Compare(contacts[i].FirstName, contacts[j].FirstName, true);
 
-                return string.Compare(a.LastName, b.LastName, true);
-            });
+                    if (firstNameCompare > 0 ||
+                        (firstNameCompare == 0 &&
+                        string.Compare(contacts[i].LastName, contacts[j].LastName, true) > 0))
+                    {
+                        Address temp = contacts[i];
+                        contacts[i] = contacts[j];
+                        contacts[j] = temp;
+                    }
+                }
+            }
         }
 
-        // UC12: Sort the entries in the address book by City, State, or Zip
+        // UC12: Ability to sort the entries in the address book by City
         public void SortByCity()
         {
-            contacts.Sort((a, b) => string.Compare(a.City, b.City, true));
+            for (int i = 0; i < contacts.Count - 1; i++)
+            {
+                for (int j = i + 1; j < contacts.Count; j++)
+                {
+                    if (string.Compare(contacts[i].City, contacts[j].City, true) > 0)
+                    {
+                        Address temp = contacts[i];
+                        contacts[i] = contacts[j];
+                        contacts[j] = temp;
+                    }
+                }
+            }
+
             Console.WriteLine("Contacts sorted by City successfully!");
         }
 
+        // UC12: Ability to sort the entries in the address book by State
         public void SortByState()
         {
-            contacts.Sort((a, b) => string.Compare(a.State, b.State, true));
+            for (int i = 0; i < contacts.Count - 1; i++)
+            {
+                for (int j = i + 1; j < contacts.Count; j++)
+                {
+                    if (string.Compare(contacts[i].State, contacts[j].State, true) > 0)
+                    {
+                        Address temp = contacts[i];
+                        contacts[i] = contacts[j];
+                        contacts[j] = temp;
+                    }
+                }
+            }
+
             Console.WriteLine("Contacts sorted by State successfully!");
         }
 
+        // UC12: Ability to sort the entries in the address book by Zip
         public void SortByZip()
         {
-            contacts.Sort((a, b) => string.Compare(a.Zip, b.Zip, true));
+            for (int i = 0; i < contacts.Count - 1; i++)
+            {
+                for (int j = i + 1; j < contacts.Count; j++)
+                {
+                    if (string.Compare(contacts[i].Zip, contacts[j].Zip, true) > 0)
+                    {
+                        Address temp = contacts[i];
+                        contacts[i] = contacts[j];
+                        contacts[j] = temp;
+                    }
+                }
+            }
+
             Console.WriteLine("Contacts sorted by Zip successfully!");
         }
 
-        // UC13: Ability to Read or Write the Address Book with Persons Contact into a File using File IO
-        public void WriteContactsToFile()
+        // UC13: Ability to Write the Address Book with Persons Contact as CSV File
+        public void WriteContactsToCSV(string filePath)
         {
-            string filePath = "AddressBookContacts.txt";
-
             using (StreamWriter writer = new StreamWriter(filePath))
-            {
-                for (int i = 0; i < contacts.Count; i++)
-                {
-                    Address a = contacts[i];
-
-                    writer.WriteLine(a.FirstName);
-                    writer.WriteLine(a.LastName);
-                    writer.WriteLine(a.AddressLine);
-                    writer.WriteLine(a.City);
-                    writer.WriteLine(a.State);
-                    writer.WriteLine(a.Zip);
-                    writer.WriteLine(a.PhoneNumber);
-                    writer.WriteLine(a.Email);
-                    writer.WriteLine("-----");
-                }
-            }
-
-            Console.WriteLine("Contacts saved successfully to file: " + filePath);
-        }
-
-        public void ReadContactsFromFile()
-        {
-            string filePath = "AddressBookContacts.txt";
-
-            if (!File.Exists(filePath))
-            {
-                Console.WriteLine("File not found: " + filePath);
-                return;
-            }
-
-            string[] lines = File.ReadAllLines(filePath);
-
-            contacts.Clear();
-
-            int i = 0;
-            while (i < lines.Length)
-            {
-                if (lines[i] == "-----")
-                {
-                    i++;
-                    continue;
-                }
-
-                string firstName = lines[i++];
-                string lastName = lines[i++];
-                string addressLine = lines[i++];
-                string city = lines[i++];
-                string state = lines[i++];
-                string zip = lines[i++];
-                string phone = lines[i++];
-                string email = lines[i++];
-
-                Address a = new Address(firstName, lastName, addressLine, city, state, zip, phone, email);
-                contacts.Add(a);
-            }
-
-            Console.WriteLine("Contacts loaded successfully from file!");
-        }
-
-        // UC14: Ability to Read/Write the Address Book with Persons Contact as CSV File
-        public void WriteContactsToCSV()
-        {
-            string csvPath = "AddressBookContacts.csv";
-
-            using (StreamWriter writer = new StreamWriter(csvPath))
             {
                 writer.WriteLine("FirstName,LastName,Address,City,State,Zip,PhoneNumber,Email");
 
                 for (int i = 0; i < contacts.Count; i++)
                 {
-                    Address a = contacts[i];
+                    Address c = contacts[i];
 
                     string line =
-                        a.FirstName + "," +
-                        a.LastName + "," +
-                        a.AddressLine + "," +
-                        a.City + "," +
-                        a.State + "," +
-                        a.Zip + "," +
-                        a.PhoneNumber + "," +
-                        a.Email;
+                        c.FirstName + "," +
+                        c.LastName + "," +
+                        c.AddressLine + "," +
+                        c.City + "," +
+                        c.State + "," +
+                        c.Zip + "," +
+                        c.PhoneNumber + "," +
+                        c.Email;
 
                     writer.WriteLine(line);
                 }
             }
 
-            Console.WriteLine("Contacts saved successfully to CSV file: " + csvPath);
+            Console.WriteLine("Contacts saved to CSV successfully!");
         }
 
-        public void ReadContactsFromCSV()
+        // UC13: Ability to Read the Address Book with Persons Contact as CSV File
+        public void ReadContactsFromCSV(string filePath)
         {
-            string csvPath = "AddressBookContacts.csv";
-
-            if (!File.Exists(csvPath))
-            {
-                Console.WriteLine("CSV file not found: " + csvPath);
-                return;
-            }
-
-            string[] lines = File.ReadAllLines(csvPath);
-
             contacts.Clear();
 
-            for (int i = 1; i < lines.Length; i++)
+            using (StreamReader reader = new StreamReader(filePath))
             {
-                string[] data = lines[i].Split(',');
+                string header = reader.ReadLine(); // skip header
 
-                if (data.Length == 8)
+                while (!reader.EndOfStream)
                 {
-                    Address a = new Address(
-                        data[0], data[1], data[2], data[3],
-                        data[4], data[5], data[6], data[7]
-                    );
+                    string line = reader.ReadLine();
+                    string[] parts = line.Split(',');
 
-                    contacts.Add(a);
+                    if (parts.Length == 8)
+                    {
+                        Address contact = new Address(
+                            parts[0], parts[1], parts[2],
+                            parts[3], parts[4], parts[5],
+                            parts[6], parts[7]
+                        );
+
+                        contacts.Add(contact);
+                    }
                 }
             }
 
-            Console.WriteLine("Contacts loaded successfully from CSV file!");
+            Console.WriteLine("Contacts loaded from CSV successfully!");
         }
     }
 }
