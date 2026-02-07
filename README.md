@@ -1076,3 +1076,25 @@ Practiced SQL queries to understand database operations
 
 Enhanced the Address Book System using collections, exception handling, generics, and added three new utility features
 
+---
+
+📅 Day 42 – February 5, 2026
+
+🧩 Topics Covered
+
+Stored procedures and triggers in SQL Server
+
+SQL joins (different types)
+
+Mentor discussion: Reflection, Annotations, and MSTest
+
+✅ Work Done
+
+Learned and practiced stored procedures, triggers, and joins in SQL
+
+Attended the mentor meeting and answered questions on Reflection, Annotations, and MSTest
+
+🎯 What I Learned
+
+How stored procedures and triggers help automate database tasks
+
