@@ -1098,3 +1098,24 @@ Attended the mentor meeting and answered questions on Reflection, Annotations, a
 
 How stored procedures and triggers help automate database tasks
 
+---
+
+📅 Day 43 – February 6, 2026
+
+🧩 Topics Covered
+
+Soft skills: communication, professionalism, workplace readiness
+
+DBMS concepts: triggers, stored procedures, cascading
+
+✅ Work Done
+
+Attended a 4-hour soft skills session focused on communication and professional growth
+
+Learned DBMS concepts including triggers, stored procedures, and cascading
+
+🎯 What I Learned
+
+Improved understanding of workplace communication and professionalism
+
+How triggers and stored procedures automate database tasks
