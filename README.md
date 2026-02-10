@@ -1119,3 +1119,25 @@ Learned DBMS concepts including triggers, stored procedures, and cascading
 Improved understanding of workplace communication and professionalism
 
 How triggers and stored procedures automate database tasks
+
+---
+
+🧩 Topics Covered
+
+DBMS integration with a C# console application
+
+Database schema design for the healthcare system
+
+CRUD operations (Create, Read, Update, Delete)
+
+✅ Work Done
+
+Learned how to connect SQL Server DBMS with a C# console app
+
+Designed the database schema for the Healthcare application
+
+Implemented CRUD operations to manage healthcare-related data
+
+🎯 What I Learned
+
+How database connectivity works in C# applications
