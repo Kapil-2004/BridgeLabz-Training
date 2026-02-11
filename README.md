@@ -1122,6 +1122,8 @@ How triggers and stored procedures automate database tasks
 
 ---
 
+📅 Day 44 – February 7, 2026
+
 🧩 Topics Covered
 
 DBMS integration with a C# console application
@@ -1141,3 +1143,40 @@ Implemented CRUD operations to manage healthcare-related data
 🎯 What I Learned
 
 How database connectivity works in C# applications
+
+---
+
+📅 Day 45 – February 9, 2026
+
+🧩 Topics Covered
+
+ADO.NET basics: data access and connectivity in C#
+
+Database schema design for the Healthcare project
+
+✅ Work Done
+
+Learned ADO.NET concepts including Connection, Command, and data handling
+
+Designed and refined the Healthcare database schema using ADO.NET
+
+🎯 What I Learned
+
+How ADO.NET connects C# applications with SQL Server
+
+Executing database operations using commands
+
+---
+
+📅 Day 46 – February 10, 2026
+
+🧩 Topics Covered
+
+Mock test: timed C# console application development
+
+✅ Work Done
+
+Appeared for a mock test where a complete C# console application was designed and implemented within a fixed time limit
+
+Applied core C# concepts, OOP principles, and logical problem-solving during development
+
