@@ -4,31 +4,23 @@ namespace TechVille
 {
     class Program
     {
-        /// <summary>
-        /// Module 3: This program stores multiple citizen IDs using arrays.
-        /// It also manages zone and sector citizen counts using a 2D array.
-        /// It supports basic operations like sorting, searching, and copying data.
-        /// </summary>
-
+        /// Module 4 Summary:
+        /// This module focuses on citizen profile management using strings and reusable methods.
+        /// It demonstrates string manipulation, email validation, string-based search, and
+        /// explains the difference between pass-by-value and pass-by-reference in C#.
         static void Main(string[] args)
         {
-            // 1D Array: Store citizen IDs (capacity 1000)
-            int[] citizenIds = new int[1000];
-            int citizenCount = 0;
-
-            // 2D Array: 5 zones and 5 sectors in each zone
-            int[,] zoneSectorCounts = new int[5, 5];
+            string[] names = new string[50];
+            string[] emails = new string[50];
+            int count = 0;
 
             while (true)
             {
-                Console.WriteLine("\n===== TechVille Smart Citizen Database (Module 3) =====");
-                Console.WriteLine("1. Add Citizen ID");
-                Console.WriteLine("2. Display Citizen IDs");
-                Console.WriteLine("3. Sort Citizen IDs");
-                Console.WriteLine("4. Search Citizen ID");
-                Console.WriteLine("5. Copy Citizen IDs");
-                Console.WriteLine("6. Update Zone-Sector Citizen Count");
-                Console.WriteLine("7. Display Zone-Sector Citizen Counts");
+                Console.WriteLine("\n===== Module 4: Citizen Profile Management =====");
+                Console.WriteLine("1. Add Profile");
+                Console.WriteLine("2. Search Profile");
+                Console.WriteLine("3. Update Email (Pass by Value)");
+                Console.WriteLine("4. Update Email (Pass by Reference)");
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter choice: ");
 
@@ -39,169 +31,124 @@ namespace TechVille
                 }
 
                 if (choice == 0)
-                {
-                    Console.WriteLine("Exiting Module 3...");
                     break;
-                }
 
                 switch (choice)
                 {
                     case 1:
-                        // Add Citizen ID
-                        if (citizenCount >= citizenIds.Length)
+                        if (count >= 50)
                         {
-                            Console.WriteLine("Citizen ID storage is full!");
+                            Console.WriteLine("Storage full!");
                             break;
                         }
 
-                        Console.Write("Enter Citizen ID: ");
-                        if (!int.TryParse(Console.ReadLine(), out int id) || id <= 0)
+                        Console.Write("Enter Name: ");
+                        string name = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(name))
                         {
-                            Console.WriteLine("Invalid Citizen ID!");
+                            Console.WriteLine("Invalid name!");
                             break;
                         }
 
-                        citizenIds[citizenCount] = id;
-                        citizenCount++;
+                        name = FormatName(name);
 
-                        Console.WriteLine("Citizen ID added successfully!");
+                        Console.Write("Enter Email: ");
+                        string email = Console.ReadLine();
+
+                        if (!IsValidEmail(email))
+                        {
+                            Console.WriteLine("Invalid email!");
+                            break;
+                        }
+
+                        email = email.Trim().ToLower();
+
+                        names[count] = name;
+                        emails[count] = email;
+                        count++;
+
+                        Console.WriteLine("Profile added successfully!");
                         break;
 
                     case 2:
-                        // Display Citizen IDs
-                        if (citizenCount == 0)
+                        if (count == 0)
                         {
-                            Console.WriteLine("No Citizen IDs found!");
+                            Console.WriteLine("No profiles found!");
                             break;
                         }
 
-                        Console.WriteLine("\nCitizen IDs:");
-                        for (int i = 0; i < citizenCount; i++)
-                        {
-                            Console.Write(citizenIds[i] + " ");
-                        }
-                        Console.WriteLine();
+                        Console.Write("Enter name to search: ");
+                        string searchName = Console.ReadLine();
+
+                        int index = SearchCitizen(names, count, searchName);
+
+                        if (index == -1)
+                            Console.WriteLine("Citizen not found!");
+                        else
+                            Console.WriteLine($"Citizen Found: {names[index]} | {emails[index]}");
+
                         break;
 
                     case 3:
-                        // Sort Citizen IDs
-                        if (citizenCount == 0)
+                        // Pass by Value Demo
+                        Console.Write("Enter name to update email: ");
+                        string updateName1 = Console.ReadLine();
+
+                        int updateIndex1 = SearchCitizen(names, count, updateName1);
+
+                        if (updateIndex1 == -1)
                         {
-                            Console.WriteLine("No Citizen IDs to sort!");
+                            Console.WriteLine("Citizen not found!");
                             break;
                         }
 
-                        // Copy only entered IDs into a temp array for sorting
-                        int[] tempSort = new int[citizenCount];
-                        Array.Copy(citizenIds, tempSort, citizenCount);
+                        Console.Write("Enter new email: ");
+                        string newEmail1 = Console.ReadLine();
 
-                        Array.Sort(tempSort);
+                        if (!IsValidEmail(newEmail1))
+                        {
+                            Console.WriteLine("Invalid email!");
+                            break;
+                        }
 
-                        // Put sorted back into main array
-                        Array.Copy(tempSort, citizenIds, citizenCount);
+                        newEmail1 = newEmail1.Trim().ToLower();
 
-                        Console.WriteLine("Citizen IDs sorted successfully!");
+                        string emailCopy = emails[updateIndex1];
+                        UpdateEmailByValue(emailCopy, newEmail1);
+
+                        Console.WriteLine("Pass by Value: Email NOT updated in array.");
+                        Console.WriteLine("Stored Email: " + emails[updateIndex1]);
                         break;
 
                     case 4:
-                        // Search Citizen ID
-                        if (citizenCount == 0)
+                        // Pass by Reference Demo
+                        Console.Write("Enter name to update email: ");
+                        string updateName2 = Console.ReadLine();
+
+                        int updateIndex2 = SearchCitizen(names, count, updateName2);
+
+                        if (updateIndex2 == -1)
                         {
-                            Console.WriteLine("No Citizen IDs to search!");
+                            Console.WriteLine("Citizen not found!");
                             break;
                         }
 
-                        Console.Write("Enter Citizen ID to search: ");
-                        if (!int.TryParse(Console.ReadLine(), out int searchId) || searchId <= 0)
+                        Console.Write("Enter new email: ");
+                        string newEmail2 = Console.ReadLine();
+
+                        if (!IsValidEmail(newEmail2))
                         {
-                            Console.WriteLine("Invalid Citizen ID!");
+                            Console.WriteLine("Invalid email!");
                             break;
                         }
 
-                        int foundIndex = -1;
+                        newEmail2 = newEmail2.Trim().ToLower();
 
-                        for (int i = 0; i < citizenCount; i++)
-                        {
-                            if (citizenIds[i] == searchId)
-                            {
-                                foundIndex = i;
-                                break;
-                            }
-                        }
+                        UpdateEmailByReference(ref emails[updateIndex2], newEmail2);
 
-                        if (foundIndex != -1)
-                        {
-                            Console.WriteLine($"Citizen ID {searchId} found at position {foundIndex + 1}.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Citizen ID not found!");
-                        }
-                        break;
-
-                    case 5:
-                        // Copy Citizen IDs
-                        if (citizenCount == 0)
-                        {
-                            Console.WriteLine("No Citizen IDs to copy!");
-                            break;
-                        }
-
-                        int[] copiedIds = new int[citizenCount];
-                        Array.Copy(citizenIds, copiedIds, citizenCount);
-
-                        Console.WriteLine("Citizen IDs copied successfully!");
-                        Console.WriteLine("Copied IDs:");
-
-                        for (int i = 0; i < copiedIds.Length; i++)
-                        {
-                            Console.Write(copiedIds[i] + " ");
-                        }
-                        Console.WriteLine();
-                        break;
-
-                    case 6:
-                        // Update Zone-Sector Citizen Count
-                        Console.Write("Enter Zone (1-5): ");
-                        if (!int.TryParse(Console.ReadLine(), out int zone) || zone < 1 || zone > 5)
-                        {
-                            Console.WriteLine("Invalid Zone!");
-                            break;
-                        }
-
-                        Console.Write("Enter Sector (1-5): ");
-                        if (!int.TryParse(Console.ReadLine(), out int sector) || sector < 1 || sector > 5)
-                        {
-                            Console.WriteLine("Invalid Sector!");
-                            break;
-                        }
-
-                        Console.Write("Enter Citizen Count for this Zone-Sector: ");
-                        if (!int.TryParse(Console.ReadLine(), out int count) || count < 0)
-                        {
-                            Console.WriteLine("Invalid Count!");
-                            break;
-                        }
-
-                        zoneSectorCounts[zone - 1, sector - 1] = count;
-                        Console.WriteLine("Zone-Sector citizen count updated successfully!");
-                        break;
-
-                    case 7:
-                        // Display Zone-Sector Citizen Counts
-                        Console.WriteLine("\nZone-Sector Citizen Counts (5x5):");
-
-                        for (int z = 0; z < 5; z++)
-                        {
-                            Console.Write($"Zone {z + 1}: ");
-
-                            for (int s = 0; s < 5; s++)
-                            {
-                                Console.Write(zoneSectorCounts[z, s] + " ");
-                            }
-
-                            Console.WriteLine();
-                        }
+                        Console.WriteLine("Pass by Reference: Email updated successfully!");
+                        Console.WriteLine("Updated Email: " + emails[updateIndex2]);
                         break;
 
                     default:
@@ -209,6 +156,72 @@ namespace TechVille
                         break;
                 }
             }
+        }
+
+        /// <summary>
+        /// Module 4 Summary:
+        /// This program manages citizen profiles using strings and methods.
+        /// It supports adding, searching, and updating citizen information.
+        /// It demonstrates pass-by-value and pass-by-reference.
+        /// </summary>
+
+        // Name Formatting Method
+        static string FormatName(string name)
+        {
+            name = name.Trim().ToLower();
+            string[] parts = name.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            string finalName = "";
+
+            for (int i = 0; i < parts.Length; i++)
+            {
+                string word = parts[i];
+                finalName += char.ToUpper(word[0]) + word.Substring(1) + " ";
+            }
+
+            return finalName.Trim();
+        }
+
+        // Email Validation Method
+        static bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            email = email.Trim();
+
+            return email.Contains("@") && email.Contains(".");
+        }
+
+        // Search Method using String Matching
+        static int SearchCitizen(string[] names, int count, string searchName)
+        {
+            if (string.IsNullOrWhiteSpace(searchName))
+                return -1;
+
+            searchName = searchName.Trim().ToLower();
+
+            for (int i = 0; i < count; i++)
+            {
+                if (names[i].ToLower().Contains(searchName))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        // Pass by Value Method
+        static void UpdateEmailByValue(string oldEmail, string newEmail)
+        {
+            oldEmail = newEmail;
+        }
+
+        // Pass by Reference Method
+        static void UpdateEmailByReference(ref string oldEmail, string newEmail)
+        {
+            oldEmail = newEmail;
         }
     }
 }
