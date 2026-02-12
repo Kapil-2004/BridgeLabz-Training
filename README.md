@@ -1180,3 +1180,24 @@ Appeared for a mock test where a complete C# console application was designed an
 
 Applied core C# concepts, OOP principles, and logical problem-solving during development
 
+---
+
+📅 Day 47 – February 11, 2026
+
+🧩 Topics Covered
+
+TechVille Smart City Management System (Modules 1–4)
+
+Core C# fundamentals, arrays, strings, methods
+
+✅ Work Done
+
+Completed Modules 1–4 of the TechVille project
+
+Implemented citizen registration, eligibility logic, array-based storage, and profile management
+
+🎯 What I Learned
+
+Building modular projects using real-world scenarios
+
+Stronger understanding of C# basics, arrays, and reusable methods
