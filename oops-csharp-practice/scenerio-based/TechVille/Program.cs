@@ -13,6 +13,9 @@ namespace TechVille
         /// Topics: this and super (base) keywords, instanceof (is operator),
         ///         static variables/methods, factory pattern
         /// 
+        /// Module 8: City Service Hierarchy (Inheritance & Polymorphism)
+        /// Topics: Inheritance, Object class methods, method overriding & overloading
+        /// 
         /// This program demonstrates:
         /// - this keyword in constructors for clarity
         /// - super (base) keyword to call parent class methods
@@ -20,6 +23,10 @@ namespace TechVille
         /// - instanceof (is operator) for type checking
         /// - Factory pattern for object creation
         /// - Premium vs Standard service differentiation
+        /// - Inheritance hierarchies with Service base class
+        /// - Object class overrides (ToString, Equals, GetHashCode)
+        /// - Method overriding for specialized behaviors
+        /// - Method overloading for flexible service booking
         /// </summary>
         static void Main(string[] args)
         {
@@ -30,13 +37,16 @@ namespace TechVille
             while (true)
             {
                 Console.WriteLine("\n╔════════════════════════════════════════════╗");
-                Console.WriteLine("║   TechVille Smart City System (Module 6)   ║");
-                Console.WriteLine("║   OOP Basics - Classes, Objects & Services  ║");
+                Console.WriteLine("║   TechVille Smart City System (Module 8)   ║");
+                Console.WriteLine("║ Inheritance, Overriding, Overloading       ║");
                 Console.WriteLine("╚════════════════════════════════════════════╝");
                 Console.WriteLine("\n--- Main Menu ---");
                 Console.WriteLine("1. Citizen Management");
                 Console.WriteLine("2. City Services");
-                Console.WriteLine("3. Exit");
+                Console.WriteLine("3. Emergency Services (Module 8)");
+                Console.WriteLine("4. Routine Services (Module 8)");
+                Console.WriteLine("5. Service Booking Demo (Overloading)");
+                Console.WriteLine("0. Exit");
                 Console.Write("Enter choice: ");
 
                 try
@@ -54,6 +64,18 @@ namespace TechVille
                             break;
 
                         case 3:
+                            EmergencyServicesMenu();
+                            break;
+
+                        case 4:
+                            RoutineServicesMenu();
+                            break;
+
+                        case 5:
+                            ServiceBookingDemo();
+                            break;
+
+                        case 0:
                             Console.WriteLine("\n👋 Thank you for using TechVille! Goodbye!");
                             return;
 
@@ -362,8 +384,7 @@ namespace TechVille
 
                         case 5:
                             {
-                                PremiumHealthcareService premium = healthcare as PremiumHealthcareService;
-                                if (isPremium && premium != null)
+                                if (healthcare is PremiumHealthcareService premium)
                                 {
                                     premium.DisplaySpecialists();
                                 }
@@ -376,8 +397,7 @@ namespace TechVille
 
                         case 6:
                             {
-                                PremiumHealthcareService premium = healthcare as PremiumHealthcareService;
-                                if (isPremium && premium != null)
+                                if (healthcare is PremiumHealthcareService premium)
                                 {
                                     Console.Write("Enter citizen name: ");
                                     string citizenName = Console.ReadLine() ?? "User";
@@ -465,8 +485,7 @@ namespace TechVille
 
                         case 4:
                             {
-                                PremiumEducationService premium = education as PremiumEducationService;
-                                if (isPremium && premium != null)
+                                if (education is PremiumEducationService premium)
                                 {
                                     premium.DisplayAdvancedCourses();
                                 }
@@ -479,8 +498,7 @@ namespace TechVille
 
                         case 5:
                             {
-                                PremiumEducationService premium = education as PremiumEducationService;
-                                if (isPremium && premium != null)
+                                if (education is PremiumEducationService premium)
                                 {
                                     Console.Write("Enter citizen name: ");
                                     string citizenName = Console.ReadLine() ?? "User";
@@ -714,6 +732,344 @@ namespace TechVille
             {
                 Console.WriteLine("❌ Please enter valid numbers!");
                 CitizenUtility.LogError(ex);
+            }
+        }
+
+        // ===== MODULE 8: EMERGENCY SERVICES MENU =====
+
+        static void EmergencyServicesMenu()
+        {
+            // Create emergency services
+            EmergencyService fireService = new EmergencyService(
+                201, "Fire Department", "Emergency fire response and rescue",
+                1000000, 5, true, "Fire");
+
+            EmergencyService ambulanceService = new EmergencyService(
+                202, "Ambulance Service", "Medical emergency response",
+                800000, 10, true, "Medical");
+
+            EmergencyService policeService = new EmergencyService(
+                203, "Police Service", "Law enforcement and public safety",
+                1200000, 8, false, "Police");
+
+            List<EmergencyService> emergencyServices = new List<EmergencyService> 
+            { 
+                fireService, ambulanceService, policeService 
+            };
+
+            while (true)
+            {
+                Console.WriteLine("\n🚨 ===== EMERGENCY SERVICES (Module 8) ===== 🚨");
+                Console.WriteLine("Demonstrates: Inheritance, Method Overriding, Specialized Behavior");
+                Console.WriteLine("\n1. View All Emergency Services");
+                Console.WriteLine("2. Respond to Fire Emergency");
+                Console.WriteLine("3. Request Ambulance");
+                Console.WriteLine("4. Contact Police");
+                Console.WriteLine("5. Service Comparison (Object equals method)");
+                Console.WriteLine("0. Back to Main Menu");
+                Console.Write("Enter choice: ");
+
+                try
+                {
+                    int choice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.WriteLine("\n🚨 All Emergency Services:");
+                            foreach (EmergencyService service in emergencyServices)
+                            {
+                                Console.WriteLine($"\n{service.ToString()}");
+                                service.DisplayServiceInfo();
+                            }
+                            break;
+
+                        case 2:
+                            Console.Write("Enter location: ");
+                            string fireLocation = Console.ReadLine() ?? "Unknown";
+                            fireService.RespondToEmergencyCall(fireLocation, "High");
+                            break;
+
+                        case 3:
+                            Console.Write("Enter location: ");
+                            string medicalLocation = Console.ReadLine() ?? "Unknown";
+                            ambulanceService.RespondToEmergencyCall(medicalLocation, "High");
+                            break;
+
+                        case 4:
+                            Console.Write("Enter location: ");
+                            string crimeLocation = Console.ReadLine() ?? "Unknown";
+                            policeService.RespondToEmergencyCall(crimeLocation, "Medium");
+                            break;
+
+                        case 5:
+                            // Demonstrate Equals() method from Object class
+                            Console.WriteLine("\n📊 Service Comparison (using Equals override):");
+                            Console.WriteLine($"Fire Service equals Fire Service: {fireService.Equals(fireService)}");
+                            Console.WriteLine($"Fire Service equals Ambulance: {fireService.Equals(ambulanceService)}");
+                            
+                            // Create another fire service with same ID
+                            EmergencyService fireService2 = new EmergencyService(
+                                201, "Fire Department Alt", "Alternative fire response",
+                                1000000, 5, true, "Fire");
+                            Console.WriteLine($"Fire Service (ID:201) equals Fire Service Alt (ID:201): {fireService.Equals(fireService2)}");
+                            break;
+
+                        case 0:
+                            return;
+
+                        default:
+                            Console.WriteLine("❌ Invalid option!");
+                            break;
+                    }
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("❌ Please enter a valid number!");
+                    CitizenUtility.LogError(ex);
+                }
+            }
+        }
+
+        // ===== MODULE 8: ROUTINE SERVICES MENU =====
+
+        static void RoutineServicesMenu()
+        {
+            // Create routine services
+            RoutineService polyclinicService = new RoutineService(
+                301, "City Polyclinic", "General medical services",
+                500000, "9 AM - 5 PM", 30, "Healthcare", true);
+
+            RoutineService libraryService = new RoutineService(
+                302, "Public Library", "Reading and reference services",
+                200000, "10 AM - 6 PM", 100, "Education", false);
+
+            RoutineService busService = new RoutineService(
+                303, "City Bus Transport", "Daily public transportation",
+                600000, "6 AM - 10 PM", 500, "Transportation", false);
+
+            List<RoutineService> routineServices = new List<RoutineService> 
+            { 
+                polyclinicService, libraryService, busService 
+            };
+
+            while (true)
+            {
+                Console.WriteLine("\n📋 ===== ROUTINE SERVICES (Module 8) ===== 📋");
+                Console.WriteLine("Demonstrates: Inheritance, Standard Procedures, Appointment Booking");
+                Console.WriteLine("\n1. View All Routine Services");
+                Console.WriteLine("2. Book Polyclinic Appointment");
+                Console.WriteLine("3. Check Library Availability");
+                Console.WriteLine("4. Check Bus Service Status");
+                Console.WriteLine("5. Service Details (Object toString method)");
+                Console.WriteLine("0. Back to Main Menu");
+                Console.Write("Enter choice: ");
+
+                try
+                {
+                    int choice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.WriteLine("\n📋 All Routine Services:");
+                            foreach (RoutineService service in routineServices)
+                            {
+                                Console.WriteLine($"\n{service.ToString()}");
+                                service.DisplayServiceInfo();
+                            }
+                            break;
+
+                        case 2:
+                            Console.Write("Enter citizen name: ");
+                            string citizenName = Console.ReadLine() ?? "Citizen";
+                            if (polyclinicService.BookAppointment(citizenName))
+                            {
+                                Console.WriteLine($"   Appointment booked at: {DateTime.Now.AddDays(1):yyyy-MM-dd 10:00}");
+                            }
+                            break;
+
+                        case 3:
+                            libraryService.CheckStatus();
+                            break;
+
+                        case 4:
+                            busService.CheckStatus();
+                            break;
+
+                        case 5:
+                            // Demonstrate ToString() override from Object class
+                            Console.WriteLine("\n📊 Routine Service Details (using ToString override):");
+                            foreach (RoutineService service in routineServices)
+                            {
+                                Console.WriteLine(service.ToString());
+                            }
+                            break;
+
+                        case 0:
+                            return;
+
+                        default:
+                            Console.WriteLine("❌ Invalid option!");
+                            break;
+                    }
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("❌ Please enter a valid number!");
+                    CitizenUtility.LogError(ex);
+                }
+            }
+        }
+
+        // ===== MODULE 8: SERVICE BOOKING DEMO (Method Overloading) =====
+
+        static void ServiceBookingDemo()
+        {
+            // Create a routine service for booking
+            RoutineService hospitalService = new RoutineService(
+                401, "City Hospital", "Hospital services",
+                1500000, "24/7", 100, "Healthcare", true);
+
+            ServiceBooking booking = new ServiceBooking(hospitalService);
+
+            while (true)
+            {
+                Console.WriteLine("\n📅 ===== SERVICE BOOKING DEMO (Module 8) ===== 📅");
+                Console.WriteLine("Demonstrates: Method Overloading with different parameter combinations");
+                Console.WriteLine("\n1. Book with Name Only");
+                Console.WriteLine("2. Book with Name and Date");
+                Console.WriteLine("3. Book with Name, Date, and Priority");
+                Console.WriteLine("4. Book with Name, Date, Priority, and Duration");
+                Console.WriteLine("5. Book with Citizen ID and Details");
+                Console.WriteLine("6. Book with Complete Details (ID, Name, Date, Priority, Notes)");
+                Console.WriteLine("7. Cancel Booking by Name");
+                Console.WriteLine("8. Cancel Booking by Citizen ID");
+                Console.WriteLine("9. View All Bookings");
+                Console.WriteLine("0. Back to Main Menu");
+                Console.Write("Enter choice: ");
+
+                try
+                {
+                    int choice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.Write("Enter citizen name: ");
+                            string name1 = Console.ReadLine() ?? "Patient";
+                            booking.BookService(name1);
+                            break;
+
+                        case 2:
+                            Console.Write("Enter citizen name: ");
+                            string name2 = Console.ReadLine() ?? "Patient";
+                            Console.Write("Enter booking date (yyyy-MM-dd HH:mm): ");
+                            if (DateTime.TryParse(Console.ReadLine(), out DateTime date2))
+                            {
+                                booking.BookService(name2, date2);
+                            }
+                            else
+                            {
+                                Console.WriteLine("❌ Invalid date format!");
+                            }
+                            break;
+
+                        case 3:
+                            Console.Write("Enter citizen name: ");
+                            string name3 = Console.ReadLine() ?? "Patient";
+                            Console.Write("Enter booking date (yyyy-MM-dd HH:mm): ");
+                            if (DateTime.TryParse(Console.ReadLine(), out DateTime date3))
+                            {
+                                Console.Write("Enter priority (High/Normal/Low): ");
+                                string priority3 = Console.ReadLine() ?? "Normal";
+                                booking.BookService(name3, date3, priority3);
+                            }
+                            else
+                            {
+                                Console.WriteLine("❌ Invalid date format!");
+                            }
+                            break;
+
+                        case 4:
+                            Console.Write("Enter citizen name: ");
+                            string name4 = Console.ReadLine() ?? "Patient";
+                            Console.Write("Enter booking date (yyyy-MM-dd HH:mm): ");
+                            if (DateTime.TryParse(Console.ReadLine(), out DateTime date4))
+                            {
+                                Console.Write("Enter priority (High/Normal/Low): ");
+                                string priority4 = Console.ReadLine() ?? "Normal";
+                                Console.Write("Enter duration (minutes): ");
+                                if (int.TryParse(Console.ReadLine(), out int duration4))
+                                {
+                                    booking.BookService(name4, date4, priority4, duration4);
+                                }
+                            }
+                            break;
+
+                        case 5:
+                            Console.Write("Enter citizen ID: ");
+                            if (int.TryParse(Console.ReadLine(), out int id5))
+                            {
+                                Console.Write("Enter citizen name: ");
+                                string name5 = Console.ReadLine() ?? "Patient";
+                                Console.Write("Enter booking date (yyyy-MM-dd HH:mm): ");
+                                if (DateTime.TryParse(Console.ReadLine(), out DateTime date5))
+                                {
+                                    booking.BookService(id5, name5, date5);
+                                }
+                            }
+                            break;
+
+                        case 6:
+                            Console.Write("Enter citizen ID: ");
+                            if (int.TryParse(Console.ReadLine(), out int id6))
+                            {
+                                Console.Write("Enter citizen name: ");
+                                string name6 = Console.ReadLine() ?? "Patient";
+                                Console.Write("Enter booking date (yyyy-MM-dd HH:mm): ");
+                                if (DateTime.TryParse(Console.ReadLine(), out DateTime date6))
+                                {
+                                    Console.Write("Enter priority (High/Normal/Low): ");
+                                    string priority6 = Console.ReadLine() ?? "Normal";
+                                    Console.Write("Enter notes: ");
+                                    string notes6 = Console.ReadLine() ?? "";
+                                    booking.BookService(id6, name6, date6, priority6, notes6);
+                                }
+                            }
+                            break;
+
+                        case 7:
+                            Console.Write("Enter citizen name to cancel: ");
+                            string cancelName = Console.ReadLine() ?? "";
+                            booking.CancelBooking(cancelName);
+                            break;
+
+                        case 8:
+                            Console.Write("Enter citizen ID to cancel: ");
+                            if (int.TryParse(Console.ReadLine(), out int cancelId))
+                            {
+                                booking.CancelBooking(cancelId);
+                            }
+                            break;
+
+                        case 9:
+                            booking.DisplayAllBookings();
+                            break;
+
+                        case 0:
+                            return;
+
+                        default:
+                            Console.WriteLine("❌ Invalid option!");
+                            break;
+                    }
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("❌ Invalid input!");
+                    CitizenUtility.LogError(ex);
+                }
             }
         }
     }

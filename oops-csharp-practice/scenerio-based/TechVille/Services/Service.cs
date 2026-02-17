@@ -165,6 +165,37 @@ namespace TechVille.Services
             return $"{serviceName} (ID: {serviceId}, Budget: ₹{budgetAllocated:F2}, Status: {(isActive ? "Active" : "Inactive")})";
         }
 
+        /// <summary>
+        /// Module 8: Override Equals from Object class
+        /// Compares two services based on their ID
+        /// Demonstrates: Object class method overriding
+        /// </summary>
+        public override bool Equals(object obj)
+        {
+            // Check if obj is null
+            if (obj == null)
+                return false;
+
+            // Check if obj is of type Service
+            if (!(obj is Service))
+                return false;
+
+            // Cast and compare serviceId
+            Service other = (Service)obj;
+            return this.serviceId == other.serviceId;
+        }
+
+        /// <summary>
+        /// Module 8: Override GetHashCode from Object class
+        /// Returns hash code based on service ID
+        /// Must be overridden when Equals() is overridden
+        /// Demonstrates: Object class method overriding
+        /// </summary>
+        public override int GetHashCode()
+        {
+            return serviceId.GetHashCode();
+        }
+
         // ===== STATIC METHODS =====
 
         /// <summary>
@@ -187,5 +218,6 @@ namespace TechVille.Services
             Console.WriteLine($"Total Services Created: {totalServicesCreated}");
             Console.WriteLine($"Premium Services: {totalPremiumServices}");
             Console.WriteLine($"Standard Services: {totalServicesCreated - totalPremiumServices}");
-        }    }
+        }
+    }
 }
