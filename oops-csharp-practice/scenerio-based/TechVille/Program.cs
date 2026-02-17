@@ -37,8 +37,8 @@ namespace TechVille
             while (true)
             {
                 Console.WriteLine("\n╔════════════════════════════════════════════╗");
-                Console.WriteLine("║   TechVille Smart City System (Module 8)   ║");
-                Console.WriteLine("║ Inheritance, Overriding, Overloading       ║");
+                Console.WriteLine("║  TechVille Smart City System (Module 9)    ║");
+                Console.WriteLine("║ Interfaces, Abstract Classes, Polymorphism ║");
                 Console.WriteLine("╚════════════════════════════════════════════╝");
                 Console.WriteLine("\n--- Main Menu ---");
                 Console.WriteLine("1. Citizen Management");
@@ -46,6 +46,7 @@ namespace TechVille
                 Console.WriteLine("3. Emergency Services (Module 8)");
                 Console.WriteLine("4. Routine Services (Module 8)");
                 Console.WriteLine("5. Service Booking Demo (Overloading)");
+                Console.WriteLine("6. Service Providers & Plugin System (Module 9)");
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter choice: ");
 
@@ -73,6 +74,10 @@ namespace TechVille
 
                         case 5:
                             ServiceBookingDemo();
+                            break;
+
+                        case 6:
+                            ServiceProviderPluginMenu();
                             break;
 
                         case 0:
@@ -383,31 +388,11 @@ namespace TechVille
                             break;
 
                         case 5:
-                            {
-                                if (healthcare is PremiumHealthcareService premium)
-                                {
-                                    premium.DisplaySpecialists();
-                                }
-                                else
-                                {
-                                    Console.WriteLine("❌ This feature is only available in Premium services!");
-                                }
-                            }
+                            Console.WriteLine("✨ Specialist consultation feature is available in Premium Healthcare services!");
                             break;
 
                         case 6:
-                            {
-                                if (healthcare is PremiumHealthcareService premium)
-                                {
-                                    Console.Write("Enter citizen name: ");
-                                    string citizenName = Console.ReadLine() ?? "User";
-                                    premium.ProvidePremiumBenefits(citizenName);
-                                }
-                                else
-                                {
-                                    Console.WriteLine("❌ Premium benefits are only available for Premium services!");
-                                }
-                            }
+                            Console.WriteLine("✨ Premium benefits feature is available in Premium Healthcare services!");
                             break;
 
                         case 0:
@@ -484,31 +469,11 @@ namespace TechVille
                             break;
 
                         case 4:
-                            {
-                                if (education is PremiumEducationService premium)
-                                {
-                                    premium.DisplayAdvancedCourses();
-                                }
-                                else
-                                {
-                                    Console.WriteLine("❌ This feature is only available in Premium services!");
-                                }
-                            }
+                            Console.WriteLine("✨ Advanced courses feature is available in Premium Education services!");
                             break;
 
                         case 5:
-                            {
-                                if (education is PremiumEducationService premium)
-                                {
-                                    Console.Write("Enter citizen name: ");
-                                    string citizenName = Console.ReadLine() ?? "User";
-                                    premium.ProvidePremiumBenefits(citizenName);
-                                }
-                                else
-                                {
-                                    Console.WriteLine("❌ Premium benefits are only available for Premium services!");
-                                }
-                            }
+                            Console.WriteLine("✨ Premium benefits feature is available in Premium Education services!");
                             break;
 
                         case 0:
@@ -1071,6 +1036,255 @@ namespace TechVille
                     CitizenUtility.LogError(ex);
                 }
             }
+        }
+
+        /// <summary>
+        /// Module 9: Service Provider Plugin System
+        /// Demonstrates: Interfaces, Abstract Classes, Polymorphism
+        /// Shows interface-based plugin architecture with external service providers
+        /// </summary>
+        static void ServiceProviderPluginMenu()
+        {
+            ServicePluginManager pluginManager = new ServicePluginManager();
+
+            // Register service providers (plugins)
+            CityHealthcareProvider healthProvider = new CityHealthcareProvider("TechVille Healthcare", 500000, 50);
+            PrivateTransportProvider transportProvider = new PrivateTransportProvider("Express Transport Co.", 300000, 30);
+            ExternalUtilitiesProvider electricityProvider = new ExternalUtilitiesProvider("PowerGrid Solutions", 200000, "Electricity");
+            ExternalUtilitiesProvider waterProvider = new ExternalUtilitiesProvider("AquaFlow Services", 150000, "Water");
+
+            pluginManager.RegisterProvider("HC001", healthProvider);
+            pluginManager.RegisterProvider("TR001", transportProvider);
+            pluginManager.RegisterProvider("EL001", electricityProvider);
+            pluginManager.RegisterProvider("WR001", waterProvider);
+
+            while (true)
+            {
+                Console.WriteLine("\n╔═══════════════════════════════════════════════╗");
+                Console.WriteLine("║  Module 9: Service Provider Plugin System   ║");
+                Console.WriteLine("║  Interfaces & Polymorphism Demo             ║");
+                Console.WriteLine("╚═══════════════════════════════════════════════╝");
+                Console.WriteLine("\n--- Service Provider Menu ---");
+                Console.WriteLine("1. Display All Registered Providers");
+                Console.WriteLine("2. Display Provider Performance Comparison");
+                Console.WriteLine("3. Book Service through Provider");
+                Console.WriteLine("4. Cancel Booking");
+                Console.WriteLine("5. Track Service");
+                Console.WriteLine("6. Generate Provider Report");
+                Console.WriteLine("7. Service Provider Demonstration");
+                Console.WriteLine("0. Back to Main Menu");
+                Console.Write("Enter choice: ");
+
+                try
+                {
+                    int choice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (choice)
+                    {
+                        case 1:
+                            // ===== DEMONSTRATE: IServiceProvider Interface =====
+                            pluginManager.DisplayAllProviders();
+                            break;
+
+                        case 2:
+                            // ===== DEMONSTRATE: Polymorphic Behavior (ITrackable) =====
+                            pluginManager.DisplayPerformanceComparison();
+                            break;
+
+                        case 3:
+                            // ===== DEMONSTRATE: Polymorphic Booking (IBookable) =====
+                            Console.WriteLine("\n📋 Available Providers for Booking:");
+                            Console.WriteLine("HC001 - Healthcare (IBookable, ICancellable, ITrackable)");
+                            Console.WriteLine("TR001 - Transport (IBookable, ITrackable)");
+                            Console.Write("\nEnter Provider ID: ");
+                            string bookProviderId = Console.ReadLine();
+
+                            Console.Write("Enter Citizen Name: ");
+                            string bookCitizen = Console.ReadLine();
+
+                            pluginManager.BookServiceThroughProvider(bookProviderId, bookCitizen);
+                            break;
+
+                        case 4:
+                            // ===== DEMONSTRATE: Polymorphic Cancellation (ICancellable) =====
+                            Console.WriteLine("\n❌ Cancel Service (Only Healthcare supports cancellation)");
+                            Console.Write("Enter Provider ID: ");
+                            string cancelProviderId = Console.ReadLine();
+
+                            Console.Write("Enter Booking ID to Cancel: ");
+                            string bookingToCancel = Console.ReadLine();
+
+                            pluginManager.CancelServiceThroughProvider(cancelProviderId, bookingToCancel);
+                            break;
+
+                        case 5:
+                            // ===== DEMONSTRATE: Polymorphic Tracking (ITrackable) =====
+                            Console.WriteLine("\n🔍 Track Service (All providers support tracking)");
+                            Console.Write("Enter Provider ID: ");
+                            string trackProviderId = Console.ReadLine();
+
+                            Console.Write("Enter Booking/Connection ID: ");
+                            string trackingId = Console.ReadLine();
+
+                            pluginManager.TrackServiceThroughProvider(trackProviderId, trackingId);
+                            break;
+
+                        case 6:
+                            // ===== DEMONSTRATE: Polymorphic Reporting (IReportable) =====
+                            Console.WriteLine("\n📊 Generate Report (Healthcare & Utilities support reporting)");
+                            Console.Write("Enter Provider ID: ");
+                            string reportProviderId = Console.ReadLine();
+
+                            pluginManager.GenerateReportFromProvider(reportProviderId);
+                            break;
+
+                        case 7:
+                            // ===== FULL DEMONSTRATION: Multiple Providers with Different Interfaces =====
+                            DemonstrateServiceProviders(pluginManager, healthProvider, transportProvider, electricityProvider);
+                            break;
+
+                        case 0:
+                            return;
+
+                        default:
+                            Console.WriteLine("❌ Invalid option!");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("❌ Invalid input!");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Comprehensive demonstration of Module 9 concepts
+        /// Shows polymorphic behavior across different interface implementations
+        /// </summary>
+        static void DemonstrateServiceProviders(ServicePluginManager manager, 
+            CityHealthcareProvider healthcare, 
+            PrivateTransportProvider transport,
+            ExternalUtilitiesProvider electricity)
+        {
+            Console.WriteLine("\n╔═══════════════════════════════════════════════╗");
+            Console.WriteLine("║  Full Polymorphism Demonstration               ║");
+            Console.WriteLine("║  Same code, different provider implementations  ║");
+            Console.WriteLine("╚═══════════════════════════════════════════════╝");
+
+            // Sample citizens to serve
+            string[] citizens = { "Raj Kumar", "Priya Singh", "Ahmed Hassan", "Lisa Wong" };
+
+            // ===== POLYMORPHIC SERVICE PROVISION =====
+            Console.WriteLine("\n🎯 Step 1: Polymorphic Service Provision");
+            Console.WriteLine("(All providers implement ProvideService() differently)");
+            foreach (var citizen in citizens)
+            {
+                healthcare.ProvideService(citizen);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                transport.ProvideService(citizens[i]);
+            }
+
+            // ===== POLYMORPHIC BOOKING (IBookable) =====
+            Console.WriteLine("\n\n📅 Step 2: Polymorphic Interface - IBookable");
+            Console.WriteLine("(Different providers with same interface, different implementations)");
+            
+            if (healthcare is IBookable healthBookable)
+            {
+                Console.WriteLine($"\n🏥 Healthcare Provider Slots:");
+                Console.WriteLine($"   Available: {healthBookable.GetAvailableSlots()}");
+                Console.WriteLine($"   Capacity: {healthBookable.GetMaxCapacity()}");
+            }
+
+            if (transport is IBookable transportBookable)
+            {
+                Console.WriteLine($"\n🚕 Transport Provider Slots:");
+                Console.WriteLine($"   Available: {transportBookable.GetAvailableSlots()}");
+                Console.WriteLine($"   Capacity: {transportBookable.GetMaxCapacity()}");
+            }
+
+            // ===== POLYMORPHIC CANCELLATION (ICancellable) =====
+            Console.WriteLine("\n\n❌ Step 3: Polymorphic Interface - ICancellable");
+            Console.WriteLine("(Not all providers implement this!)");
+            
+            if (healthcare is ICancellable healthCancellable)
+            {
+                Console.WriteLine($"\n✅ Healthcare supports cancellation!");
+                Console.WriteLine($"   Deadline: {healthCancellable.GetCancellationDeadlineHours()} hours");
+                Console.WriteLine($"   Cancellation allowed: {healthCancellable.IsCancellationAllowed()}");
+            }
+
+            if (transport is ICancellable transportCancellable)
+            {
+                Console.WriteLine($"\n🚕 Transport supports cancellation!");
+            }
+            else
+            {
+                Console.WriteLine($"\n🚕 Transport does NOT implement ICancellable");
+            }
+
+            if (electricity is ICancellable utilityCancellable)
+            {
+                Console.WriteLine($"\n⚡ Utilities support cancellation!");
+            }
+            else
+            {
+                Console.WriteLine($"\n⚡ Utilities do NOT implement ICancellable");
+            }
+
+            // ===== POLYMORPHIC TRACKING (ITrackable) =====
+            Console.WriteLine("\n\n🔍 Step 4: Polymorphic Interface - ITrackable");
+            Console.WriteLine("(All providers implement tracking differently)");
+            
+            List<ServiceProvider> trackables = new List<ServiceProvider> { healthcare, transport, electricity };
+            foreach (var provider in trackables)
+            {
+                if (provider is ITrackable trackable)
+                {
+                    Console.WriteLine($"\n✓ {provider.GetProviderName()}");
+                    Console.WriteLine($"  Status: {trackable.GetServiceStatus()}");
+                }
+            }
+
+            // ===== POLYMORPHIC REPORTING (IReportable) =====
+            Console.WriteLine("\n\n📊 Step 5: Polymorphic Interface - IReportable");
+            Console.WriteLine("(Service implementations for analytics)");
+            
+            if (healthcare is IReportable healthReportable)
+            {
+                Console.WriteLine($"\n🏥 {healthcare.GetProviderName()} Report:");
+                Console.WriteLine($"   {healthReportable.GenerateReport()}");
+            }
+
+            if (electricity is IReportable utilReportable)
+            {
+                Console.WriteLine($"\n⚡ {electricity.GetProviderName()} Report:");
+                Console.WriteLine($"   {utilReportable.GenerateReport()}");
+            }
+
+            // ===== ABSTRACT CLASS IMPLEMENTATION =====
+            Console.WriteLine("\n\n🏛️  Step 6: Abstract Class - Encapsulation & Common Functionality");
+            Console.WriteLine("(ServiceProvider base class provides shared implementation)");
+            
+            Console.WriteLine($"\n📌 All providers share these features:");
+            foreach (var provider in trackables)
+            {
+                Console.WriteLine($"\n  • {provider.GetProviderName()}");
+                Console.WriteLine($"    Status: {(provider.IsOperational() ? "✅ Online" : "❌ Offline")}");
+                Console.WriteLine($"    Rating: {provider.GetProviderRating():F1}/5.0");
+                provider.DisplayDetailedStatus();
+            }
+
+            Console.WriteLine("\n\n✅ Module 9 Demonstration Complete!");
+            Console.WriteLine("Key Concepts Shown:");
+            Console.WriteLine("  ✓ Interfaces define contracts (IBookable, ICancellable, ITrackable, IReportable)");
+            Console.WriteLine("  ✓ Abstract base class provides common functionality (ServiceProvider)");
+            Console.WriteLine("  ✓ Polymorphism allows different implementations of same interface");
+            Console.WriteLine("  ✓ Optional interface implementation (not all providers implement all)");
+            Console.WriteLine("  ✓ Plugin architecture - providers can be swapped dynamically");
+            Console.WriteLine("  ✓ Encapsulation - private attributes with public properties");
         }
     }
 }
