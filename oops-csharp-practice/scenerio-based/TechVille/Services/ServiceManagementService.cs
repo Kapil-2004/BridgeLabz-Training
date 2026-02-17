@@ -23,56 +23,27 @@ namespace TechVille.Services
         // ===== PRIVATE METHODS =====
 
         /// <summary>
-        /// Initialize default services
+        /// Initialize default services using Factory Pattern
+        /// Demonstrates: Static factory methods for object creation
         /// </summary>
         private void InitializeServices()
         {
-            // Create Healthcare Service
-            HealthcareService healthcare = new HealthcareService(
-                101,
-                "Primary health center for TechVille",
-                500000.0,
-                50,
-                20,
-                "General Medicine"
-            );
-            services.Add(healthcare);
+            // Using factory methods to create services
+            ServiceFactory.CreateStandardHealthcareService(101);
+            ServiceFactory.CreatePremiumHealthcareService(102);
+            
+            ServiceFactory.CreateStandardEducationService(103);
+            ServiceFactory.CreatePremiumEducationService(104);
+            
+            ServiceFactory.CreateTransportationService(105);
+            ServiceFactory.CreateUtilitiesService(106);
 
-            // Create Education Service
-            EducationService education = new EducationService(
-                102,
-                "Public education system for TechVille",
-                800000.0,
-                5,
-                100,
-                new string[] { "Primary", "Secondary", "Higher Secondary" }
-            );
-            services.Add(education);
+            // Get all services from factory
+            services = ServiceFactory.GetAllServices();
 
-            // Create Transportation Service
-            TransportationService transportation = new TransportationService(
-                103,
-                "Public transportation network",
-                400000.0,
-                20,
-                10,
-                5.0
-            );
-            services.Add(transportation);
-
-            // Create Utilities Service
-            UtilitiesService utilities = new UtilitiesService(
-                104,
-                "Water, electricity, and waste management",
-                600000.0,
-                5000,
-                8000,
-                85.5,
-                new string[] { "Water Supply", "Electricity", "Waste Management", "Drainage" }
-            );
-            services.Add(utilities);
-
-            Console.WriteLine($"✅ {Service.TotalServicesCreated} services initialized!\n");
+            Console.WriteLine($"✅ {Service.TotalServicesCreated} services initialized!");
+            Console.WriteLine($"   └─ Premium Services: {Service.TotalPremiumServices}");
+            Console.WriteLine($"   └─ Standard Services: {Service.TotalServicesCreated - Service.TotalPremiumServices}\n");
         }
 
         // ===== PUBLIC METHODS =====
@@ -221,11 +192,99 @@ namespace TechVille.Services
         public void ShowServiceMenu()
         {
             Console.WriteLine("\n===== City Services =====");
-            Console.WriteLine("101. Healthcare Service");
-            Console.WriteLine("102. Education Service");
-            Console.WriteLine("103. Transportation Service");
-            Console.WriteLine("104. Utilities Service");
+            Console.WriteLine("101. Healthcare Service (Standard)");
+            Console.WriteLine("102. Healthcare Service (Premium)");
+            Console.WriteLine("103. Education Service (Standard)");
+            Console.WriteLine("104. Education Service (Premium)");
+            Console.WriteLine("105. Transportation Service");
+            Console.WriteLine("106. Utilities Service");
             Console.WriteLine("0. Back to Main Menu");
         }
-    }
+
+        /// <summary>
+        /// Check service type and provide information
+        /// Demonstrates: instanceof pattern (C# 'is' operator)
+        /// </summary>
+        public void CheckServiceDetails(int serviceId)
+        {
+            Service service = FindServiceById(serviceId);
+            if (service != null)
+            {
+                ServiceFactory.DisplayServiceTypeInfo(service);
+            }
+            else
+            {
+                Console.WriteLine("❌ Service not found!");
+            }
+        }
+
+        /// <summary>
+        /// Upgrade service to premium
+        /// Demonstrates: Type checking and conditional logic based on service type
+        /// </summary>
+        public void AttemptServiceUpgrade(int standardServiceId)
+        {
+            Service service = FindServiceById(standardServiceId);
+            if (service != null)
+            {
+                ServiceFactory.UpgradeServiceToPremium(service);
+            }
+            else
+            {
+                Console.WriteLine("❌ Service not found!");
+            }
+        }
+
+        /// <summary>
+        /// Display all services with premium/standard indicators
+        /// </summary>
+        public void DisplayAllServicesWithTypes()
+        {
+            Console.WriteLine("\n===== All City Services (Module 7) =====");
+            Console.WriteLine($"Total Services: {Service.TotalServicesCreated}");
+            Console.WriteLine($"Premium Services: {Service.TotalPremiumServices}");
+            Console.WriteLine($"Standard Services: {Service.TotalServicesCreated - Service.TotalPremiumServices}\n");
+
+            for (int i = 0; i < services.Count; i++)
+            {
+                Service service = services[i];
+                string serviceType = ServiceFactory.IsPremiumService(service) ? "🌟 PREMIUM" : "📋 STANDARD";
+                Console.WriteLine($"\n[{i + 1}] {serviceType} - {service.ServiceName}");
+                service.DisplayServiceInfo();
+            }
+        }
+
+        /// <summary>
+        /// Demonstrate premium service benefits
+        /// Uses instanceof to check if service is premium
+        /// </summary>
+        public void ShowPremiumBenefits(int serviceId, string userName)
+        {
+            Service service = FindServiceById(serviceId);
+            
+            if (service == null)
+            {
+                Console.WriteLine("❌ Service not found!");
+                return;
+            }
+
+            // Using instanceof operator to check if premium
+            if (ServiceFactory.IsPremiumService(service))
+            {
+                PremiumService premiumService = (PremiumService)service;
+                premiumService.ProvidePremiumBenefits(userName);
+            }
+            else
+            {
+                Console.WriteLine($"❌ {service.ServiceName} is not a Premium service!");
+            }
+        }
+
+        /// <summary>
+        /// Display factory-created service registry
+        /// </summary>
+        public void DisplayServiceRegistry()
+        {
+            ServiceFactory.DisplayServiceRegistry();
+        }    }
 }

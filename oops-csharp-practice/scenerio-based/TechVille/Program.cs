@@ -9,16 +9,17 @@ namespace TechVille
     class Program
     {
         /// <summary>
-        /// Module 6: City Services Framework (OOP Basics)
-        /// Topics: Classes, Objects, Constructors, Access Modifiers, Inheritance, Polymorphism
+        /// Module 7: Advanced Service Architecture (Advanced OOP)
+        /// Topics: this and super (base) keywords, instanceof (is operator),
+        ///         static variables/methods, factory pattern
         /// 
         /// This program demonstrates:
-        /// - Design of Citizen class with private attributes and public methods
-        /// - Service base class with abstract methods
-        /// - Specific service implementations (Healthcare, Education, Transportation, Utilities)
-        /// - Difference between classes and objects (multiple Citizen objects from one class)
-        /// - Instance variables (unique to each Citizen object)
-        /// - Class variables (shared across all Service objects)
+        /// - this keyword in constructors for clarity
+        /// - super (base) keyword to call parent class methods
+        /// - Static variables tracking total services globally
+        /// - instanceof (is operator) for type checking
+        /// - Factory pattern for object creation
+        /// - Premium vs Standard service differentiation
         /// </summary>
         static void Main(string[] args)
         {
@@ -147,13 +148,17 @@ namespace TechVille
         {
             while (true)
             {
-                Console.WriteLine("\n--- City Services Management ---");
-                Console.WriteLine("1. View All Services");
-                Console.WriteLine("2. Access Healthcare Service");
-                Console.WriteLine("3. Access Education Service");
-                Console.WriteLine("4. Access Transportation Service");
-                Console.WriteLine("5. Access Utilities Service");
-                Console.WriteLine("6. Provide Service to Citizen");
+                Console.WriteLine("\n--- City Services Management (Module 7) ---");
+                Console.WriteLine("1. View All Services (Standard + Premium)");
+                Console.WriteLine("2. Service Registry & Statistics");
+                Console.WriteLine("3. Check Service Type (instanceof demo)");
+                Console.WriteLine("4. Show Premium Benefits");
+                Console.WriteLine("5. Attempt Service Upgrade");
+                Console.WriteLine("6. Access Healthcare Service");
+                Console.WriteLine("7. Access Education Service");
+                Console.WriteLine("8. Access Transportation Service");
+                Console.WriteLine("9. Access Utilities Service");
+                Console.WriteLine("10. Provide Service to Citizen");
                 Console.WriteLine("0. Back to Main Menu");
                 Console.Write("Enter choice: ");
 
@@ -164,26 +169,43 @@ namespace TechVille
                     switch (choice)
                     {
                         case 1:
-                            serviceManager.DisplayAllServices();
+                            serviceManager.DisplayAllServicesWithTypes();
                             break;
 
                         case 2:
-                            AccessHealthcareService(serviceManager);
+                            serviceManager.DisplayServiceRegistry();
+                            Service.DisplayServiceStatistics();
                             break;
 
                         case 3:
-                            AccessEducationService(serviceManager);
+                            CheckServiceType(serviceManager);
                             break;
 
                         case 4:
-                            AccessTransportationService(serviceManager);
+                            ShowPremiumBenefits(serviceManager);
                             break;
 
                         case 5:
-                            AccessUtilitiesService(serviceManager);
+                            AttemptUpgrade(serviceManager);
                             break;
 
                         case 6:
+                            AccessHealthcareService(serviceManager);
+                            break;
+
+                        case 7:
+                            AccessEducationService(serviceManager);
+                            break;
+
+                        case 8:
+                            AccessTransportationService(serviceManager);
+                            break;
+
+                        case 9:
+                            AccessUtilitiesService(serviceManager);
+                            break;
+
+                        case 10:
                             ProvideServiceToCitizen(serviceManager, citizens);
                             break;
 
@@ -208,12 +230,80 @@ namespace TechVille
             }
         }
 
-        // ===== HEALTHCARE SERVICE SUBMENU =====
+        // ===== MODULE 7: ADVANCED OOP FEATURES =====
+
+        /// <summary>
+        /// Check service type using instanceof pattern
+        /// Demonstrates: 'is' operator (C# instanceof), type checking
+        /// </summary>
+        static void CheckServiceType(ServiceManagementService serviceManager)
+        {
+            Console.Write("\nEnter Service ID to check: ");
+            try
+            {
+                int serviceId = Convert.ToInt32(Console.ReadLine());
+                serviceManager.CheckServiceDetails(serviceId);
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("❌ Please enter a valid ID!");
+                CitizenUtility.LogError(ex);
+            }
+        }
+
+        /// <summary>
+        /// Display premium service benefits
+        /// Demonstrates: Type casting, premium service access
+        /// </summary>
+        static void ShowPremiumBenefits(ServiceManagementService serviceManager)
+        {
+            Console.Write("\nEnter Service ID for premium benefits: ");
+            try
+            {
+                int serviceId = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter citizen name: ");
+                string citizenName = Console.ReadLine() ?? "User";
+                serviceManager.ShowPremiumBenefits(serviceId, citizenName);
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("❌ Please enter valid input!");
+                CitizenUtility.LogError(ex);
+            }
+        }
+
+        /// <summary>
+        /// Attempt to upgrade a service to premium
+        /// Demonstrates: Type checking, conditional upgrades
+        /// </summary>
+        static void AttemptUpgrade(ServiceManagementService serviceManager)
+        {
+            Console.Write("\nEnter Service ID to upgrade: ");
+            try
+            {
+                int serviceId = Convert.ToInt32(Console.ReadLine());
+                serviceManager.AttemptServiceUpgrade(serviceId);
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("❌ Please enter a valid ID!");
+                CitizenUtility.LogError(ex);
+            }
+        }
+
+        // ===== ORIGINAL SERVICE ACCESS METHODS =====
+
+        // ===== ORIGINAL SERVICE ACCESS METHODS =====
 
         static void AccessHealthcareService(ServiceManagementService serviceManager)
         {
-            HealthcareService healthcare = serviceManager.GetHealthcareService();
+            Service service = serviceManager.FindServiceById(101);
+            if (service == null)
+            {
+                service = serviceManager.FindServiceById(102);
+            }
 
+            HealthcareService healthcare = service as HealthcareService;
             if (healthcare == null)
             {
                 Console.WriteLine("❌ Healthcare service not available!");
@@ -222,11 +312,22 @@ namespace TechVille
 
             while (true)
             {
-                Console.WriteLine("\n--- Healthcare Service ---");
+                // Check if this is a premium service using instanceof pattern
+                bool isPremium = ServiceFactory.IsPremiumService(healthcare);
+                string serviceType = isPremium ? "PREMIUM" : "STANDARD";
+
+                Console.WriteLine($"\n--- {serviceType} Healthcare Service ---");
                 Console.WriteLine("1. View Service Details");
                 Console.WriteLine("2. Admit Patient");
                 Console.WriteLine("3. Discharge Patient");
                 Console.WriteLine("4. Check Bed Availability");
+                
+                if (isPremium)
+                {
+                    Console.WriteLine("5. View Specialists (Premium Feature)");
+                    Console.WriteLine("6. Show Premium Benefits");
+                }
+                
                 Console.WriteLine("0. Back");
                 Console.Write("Enter choice: ");
 
@@ -242,13 +343,13 @@ namespace TechVille
 
                         case 2:
                             Console.Write("Enter patient name: ");
-                            string patientName = Console.ReadLine();
+                            string patientName = Console.ReadLine() ?? "Patient";
                             healthcare.AdmitPatient(patientName);
                             break;
 
                         case 3:
                             Console.Write("Enter patient name: ");
-                            string dischargePatient = Console.ReadLine();
+                            string dischargePatient = Console.ReadLine() ?? "Patient";
                             healthcare.DischargePatient(dischargePatient);
                             break;
 
@@ -257,6 +358,36 @@ namespace TechVille
                                 Console.WriteLine("✅ Beds are available!");
                             else
                                 Console.WriteLine("❌ No beds available!");
+                            break;
+
+                        case 5:
+                            {
+                                PremiumHealthcareService premium = healthcare as PremiumHealthcareService;
+                                if (isPremium && premium != null)
+                                {
+                                    premium.DisplaySpecialists();
+                                }
+                                else
+                                {
+                                    Console.WriteLine("❌ This feature is only available in Premium services!");
+                                }
+                            }
+                            break;
+
+                        case 6:
+                            {
+                                PremiumHealthcareService premium = healthcare as PremiumHealthcareService;
+                                if (isPremium && premium != null)
+                                {
+                                    Console.Write("Enter citizen name: ");
+                                    string citizenName = Console.ReadLine() ?? "User";
+                                    premium.ProvidePremiumBenefits(citizenName);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("❌ Premium benefits are only available for Premium services!");
+                                }
+                            }
                             break;
 
                         case 0:
@@ -279,8 +410,13 @@ namespace TechVille
 
         static void AccessEducationService(ServiceManagementService serviceManager)
         {
-            EducationService education = serviceManager.GetEducationService();
+            Service service = serviceManager.FindServiceById(103);
+            if (service == null)
+            {
+                service = serviceManager.FindServiceById(104);
+            }
 
+            EducationService education = service as EducationService;
             if (education == null)
             {
                 Console.WriteLine("❌ Education service not available!");
@@ -289,10 +425,21 @@ namespace TechVille
 
             while (true)
             {
-                Console.WriteLine("\n--- Education Service ---");
+                // Check if this is a premium service using instanceof pattern
+                bool isPremium = ServiceFactory.IsPremiumService(education);
+                string serviceType = isPremium ? "PREMIUM" : "STANDARD";
+
+                Console.WriteLine($"\n--- {serviceType} Education Service ---");
                 Console.WriteLine("1. View Service Details");
                 Console.WriteLine("2. Enroll Student");
                 Console.WriteLine("3. View Programs");
+                
+                if (isPremium)
+                {
+                    Console.WriteLine("4. View Advanced Courses (Premium Feature)");
+                    Console.WriteLine("5. Show Premium Benefits");
+                }
+                
                 Console.WriteLine("0. Back");
                 Console.Write("Enter choice: ");
 
@@ -308,12 +455,42 @@ namespace TechVille
 
                         case 2:
                             Console.Write("Enter student name: ");
-                            string studentName = Console.ReadLine();
+                            string studentName = Console.ReadLine() ?? "Student";
                             education.EnrollStudent(studentName);
                             break;
 
                         case 3:
                             education.DisplayPrograms();
+                            break;
+
+                        case 4:
+                            {
+                                PremiumEducationService premium = education as PremiumEducationService;
+                                if (isPremium && premium != null)
+                                {
+                                    premium.DisplayAdvancedCourses();
+                                }
+                                else
+                                {
+                                    Console.WriteLine("❌ This feature is only available in Premium services!");
+                                }
+                            }
+                            break;
+
+                        case 5:
+                            {
+                                PremiumEducationService premium = education as PremiumEducationService;
+                                if (isPremium && premium != null)
+                                {
+                                    Console.Write("Enter citizen name: ");
+                                    string citizenName = Console.ReadLine() ?? "User";
+                                    premium.ProvidePremiumBenefits(citizenName);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("❌ Premium benefits are only available for Premium services!");
+                                }
+                            }
                             break;
 
                         case 0:

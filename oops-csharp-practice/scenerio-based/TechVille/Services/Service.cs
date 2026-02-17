@@ -3,14 +3,24 @@ using System;
 namespace TechVille.Services
 {
     /// <summary>
-    /// Module 6: Base Service Class
-    /// Demonstrates: Classes, Constructors, Access Modifiers, Encapsulation
-    /// Topics: Base class with virtual methods for polymorphism
+    /// Module 7: Base Service Class (Advanced OOP)
+    /// Demonstrates: Static variables, Static methods, this keyword, Abstract methods
+    /// Topics: Base class with virtual methods for polymorphism, factory pattern support
     /// </summary>
     public abstract class Service
     {
-        // ===== CLASS VARIABLE (Shared across all service instances) =====
+        // ===== STATIC VARIABLES (Shared across all service instances) =====
+        /// <summary>
+        /// Total count of all services created in the system
+        /// Demonstrates: Static variable for class-level tracking
+        /// </summary>
         private static int totalServicesCreated = 0;
+
+        /// <summary>
+        /// Total count of premium services created
+        /// Demonstrates: Separate static counter for premium services
+        /// </summary>
+        private static int totalPremiumServices = 0;
 
         // ===== PRIVATE ATTRIBUTES =====
         private int serviceId;
@@ -20,20 +30,34 @@ namespace TechVille.Services
         private bool isActive;
         private DateTime establishedDate;
 
-        // ===== PUBLIC PROPERTY TO ACCESS CLASS VARIABLE =====
+        // ===== PUBLIC STATIC PROPERTY =====
+        /// <summary>
+        /// Access total services count (read-only)
+        /// </summary>
         public static int TotalServicesCreated
         {
             get { return totalServicesCreated; }
+        }
+
+        /// <summary>
+        /// Access total premium services count (read-only)
+        /// </summary>
+        public static int TotalPremiumServices
+        {
+            get { return totalPremiumServices; }
         }
 
         // ===== CONSTRUCTORS =====
 
         /// <summary>
         /// Protected Constructor (Can only be called by derived classes)
-        /// Demonstrates: Access modifiers and inheritance
+        /// Demonstrates: Access modifiers, inheritance, and this keyword
+        /// Uses 'this.' to explicitly reference instance variables
         /// </summary>
         protected Service(int serviceId, string serviceName, string description, double budgetAllocated)
         {
+            // Using 'this' keyword to reference instance variables
+            // This avoids confusion between parameters and attributes
             this.serviceId = serviceId;
             this.serviceName = serviceName;
             this.description = description;
@@ -140,5 +164,28 @@ namespace TechVille.Services
         {
             return $"{serviceName} (ID: {serviceId}, Budget: ₹{budgetAllocated:F2}, Status: {(isActive ? "Active" : "Inactive")})";
         }
-    }
+
+        // ===== STATIC METHODS =====
+
+        /// <summary>
+        /// Static method: Increment premium service counter
+        /// Only called by premium service subclasses
+        /// </summary>
+        protected static void IncrementPremiumCounter()
+        {
+            totalPremiumServices++;
+        }
+
+        /// <summary>
+        /// Static method: Get all service statistics
+        /// </summary>
+        public static void DisplayServiceStatistics()
+        {
+            Console.WriteLine("\n╔════════════════════════════════════╗");
+            Console.WriteLine("║   TOTAL SERVICE STATISTICS         ║");
+            Console.WriteLine("╚════════════════════════════════════╝");
+            Console.WriteLine($"Total Services Created: {totalServicesCreated}");
+            Console.WriteLine($"Premium Services: {totalPremiumServices}");
+            Console.WriteLine($"Standard Services: {totalServicesCreated - totalPremiumServices}");
+        }    }
 }
