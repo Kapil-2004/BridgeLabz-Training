@@ -1,0 +1,15 @@
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\TechVille\bin\Debug\net10.0\TechVille.exe
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\TechVille\bin\Debug\net10.0\TechVille.deps.json
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\TechVille\bin\Debug\net10.0\TechVille.runtimeconfig.json
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\TechVille\bin\Debug\net10.0\TechVille.dll
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\TechVille\bin\Debug\net10.0\TechVille.pdb
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\TechVille\obj\Debug\net10.0\TechVille.GeneratedMSBuildEditorConfig.editorconfig
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\TechVille\obj\Debug\net10.0\TechVille.AssemblyInfoInputs.cache
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\TechVille\obj\Debug\net10.0\TechVille.AssemblyInfo.cs
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\TechVille\obj\Debug\net10.0\TechVille.csproj.CoreCompileInputs.cache
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\TechVille\obj\Debug\net10.0\TechVille.sourcelink.json
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\TechVille\obj\Debug\net10.0\TechVille.dll
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\TechVille\obj\Debug\net10.0\refint\TechVille.dll
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\TechVille\obj\Debug\net10.0\TechVille.pdb
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\TechVille\obj\Debug\net10.0\TechVille.genruntimeconfig.cache
+D:\BridgeLabz-Training\collection-csharp-practice\scenerio-based\TechVille\obj\Debug\net10.0\ref\TechVille.dll
